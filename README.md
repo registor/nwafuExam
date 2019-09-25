@@ -19,7 +19,7 @@ Happy LaTeXing!
 ---------------------
 
 1. 排版样例
-![](./screenshot/exampaper.png)
+![](./screenshots/exampaper.png)
 
 2. 更多样例请查看"./demo"。
 
