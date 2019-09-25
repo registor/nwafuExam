@@ -1,0 +1,397 @@
+% nwsuafexam文档类各个选项的含义：
+% answers     是否显示答案（缺省为不显示）
+% sealed      是否为密封试卷（缺省为普通）
+% contitemcnt 是否为各小题题目进行连续编号（缺省为不连续编号）
+% prescorebox 显示前置评分框（缺省为不显示）。
+% cancelspace 忽略答题空白（在answers下此项无效）
+% Tailscore   分值显示位置（题目开头或者题目右边界，缺省为题目开头）
+\documentclass[sealed,answers,prescorebox]{nwsuafexam}%当调用或者取消一些选项参数时可能会造成试卷总页数改变，因此建议在调用或取消sealed、cancelspace、answers三个参数中的一个或几个时，先执行“工具”->“清理辅助文件”操作后再编译，否则会造成页数错乱。
+\begin{document}	
+	% 设置试卷基本信息
+	\papertitle{西北农林科技大学本科课程考试试卷}
+	\studyyear{2011}{2012}
+	\semester{1}
+	\subject{C++面向程序设计}
+	\testmethod{闭}
+	\proteacher{张XX}
+	\checkteacher{李XX}
+	\papercategory{A}
+	% 生成标题
+	\maketitle
+	%注意事项(提供两个环境参数，分别为总分数和考试时间，环境中默认已经定义了“本试卷共XX道试题, 满分XX分,考试时间XX分钟.”格式的一条注意事项，其余事项可在环境中使用\item命令输入)
+	\begin{notice}{100}{120}
+		\item 学生在答题前请先填写专业、学号、学院、姓名等基本信息。
+	\end{notice}
+	
+	%综合得分表
+	{\heiti
+		\begin{tabularx}{\textwidth}{|*{8}{>{\centering\arraybackslash}X|}}
+			\hline
+			题号 & 一 & 二 & 三 & 四 & 五 & 总分 & 审核人\\
+			\hline
+			得分 &    &    &    &    &    &     &      \\
+			\hline
+		\end{tabularx}}
+	%输入试卷题目
+	\begin{questions}
+		%单项选择题
+		\MainQuestion{单项选择题}{本大题共10小题，每小题2分，共20分。在每小题列出的四个备选项中，只有一个是符合题目要求的，请将其代码填写在题后的括号内。错选、多选或未选均无分。}
+		\question
+		说明虚函数的关键字是\selectline。\selectbracket{B}
+		\Choices{inline}{virtual}{define}{static}
+		
+		\question
+		在每个C++程序中都必须包含有这样一个函数，该函数的函数名为\selectbracket{A}
+		\Choices{main}{MAIN}{name}{function}
+		
+		\question
+		cout是某个类的标准对象的引用，该类是\selectline。\selectbracket{A}
+		\Choices{ostream}{istream}{stdout}{stdin}
+		
+		\question
+		如果在类外有函数调用CPoint::func()；则函数func()是类CPoint的\selectbracket{C}
+		\Choices{私有静态成员函数}{公有非静态成员函数}{公有静态成员函数}{友元函数}
+		
+		\question
+		如果class类中的所有成员在定义时都没有使用关键字public、private或protected，则所有成员缺省定义为\selectline。\selectbracket{C}
+		\Choices{public}{protected}{private}{static}
+		
+		\question
+		一个类的所有对象共享的是\selectline。\selectbracket{D}
+		\Choices{私有数据成员}{公有数据成员}{保护数据成员}{静态数据成员}
+		
+		\question
+		动态联编所支持的多态性称为\selectline。\selectbracket{D}
+		\Choices{虚函数}{继承}{编译时多态性}{运行时多态性}
+		
+		\question
+		定义类模板时要使用关键字\selectline。\selectbracket{D}
+		\Choices{const}{new}{delete}{template}
+		
+		\question
+		对虚基类的定义\selectline。\selectbracket{A}
+		\Choices{不需要使用虚函数}{必须使用虚函数}{必须使用private}{必须使用public}
+		
+		\question
+		类型转换函数\selectline。\selectbracket{A}
+		\Choices{不能带有参数}{只能带一个参数}{只能带2个参数}{只能带3个参数}
+		
+		%判断正误题
+		\MainQuestion{判断正误题}{本大题共10小题，每小题2分，共20分。判断正误，在题后的括号内，正确的划上“\true”错误的划上“\flase”。}
+		\question
+		虚函数在基类和派生类之间定义，且要求函数原型完全一致。\selectbracket{\true}
+		
+		\question
+		抽象类可以用来直接创建对象。\selectbracket{\flase}
+		
+		\question
+		内联函数中可以出现递归语句。\selectbracket{\flase}
+		
+		\question
+		模板类与类模板的意义完全相同。\selectbracket{\flase}
+		
+		\question
+		常对象只能调用常成员函数。\selectbracket{\true}
+		
+		\question
+		重载函数要求函数有相同的函数名，但具有不同的参数序列。\selectbracket{\true}
+		
+		\question
+		不可以定义抽象类的对象。\selectbracket{\true}
+		
+		\question
+		内联函数的定义必须出现在第一次调用内联函数之前。\selectbracket{\true}
+		
+		\question
+		模板函数与函数模板的意义完全相同。\selectbracket{\flase}
+		
+		\question
+    	只有常成员函数才可以操作常对象。\selectbracket{\true}
+		
+		%填空题
+	    \MainQuestion{填空题}{本大题共10小题，每小题2分，共20分。不写解答过程，将正确的答案写在每小题的空格内。错填或不填均无分。}
+	    \question
+	    在用C++进行程序设计时，最好用\blank{new} 代替malloc。
+	    
+	    \question
+	    函数模板紧随template之后尖括号内的类型参数要寇以保留字\blank{class}。
+	    
+	    \question
+	    编译时多态性可以用\blank{重载} 函数实现。
+	     
+	    \question
+	    拷贝构造函数用它所在类的\blank{对象} 作为参数。
+	    
+	    \question
+	    用关键字static修饰的类的成员称为\blank{静态} 成员。
+	    
+	    \question
+	    重载运算符“+”的函数名为\blank{operator+}。
+	    
+	    \question
+	    设函数max是由函数模板实现的，并且max(3.5, 5)和max(3, 5)都是正确的函数调用，则此函数模板具有\blank{2} 个类型参数。
+	    
+	    \question
+	    在C++中，函数重载与虚函数帮助实现了类的\blank{多态} 性。
+	    
+	    \question
+	    由static修饰的数据成员为该类的所有对象\blank{共享}。
+	    
+	    \question
+	    重载函数在参数类型或参数个数上不同，但\blank{函数名} 相同。
+	    
+	    %程序分析题
+	    \MainQuestion{程序分析题}{本大题共4小题，每小题5分，共20分。给出下面各程序的输出结果。}
+	    \question
+	    阅读下面程序，写出输出结果。
+	    \begin{flushleft}
+	    	\wuhao
+	    	 \begin{verbatim}
+	    	 #include <iostream>
+	    	 using namespace std;
+	    	 class CArray
+	    	 {
+	    	 public:
+	    	 CArray(int iArray[], int iSize):m_pArray(iArray), m_iSize(iSize)
+	    	 {
+	    	 }
+	    	 int GetSize()
+	    	 {
+	    	 return m_iSize;
+	    	 }
+	    	 int &operator[](int iIndex)
+	    	 {
+	    	 return m_pArray[iIndex - 1];
+	    	 }
+	    	 private:
+	    	 int *m_pArray;			// 指向一个数组空间
+	    	 int m_iSize;				// 数组元素个数
+	    	 };
+	    	 int main()
+	    	 {
+	    	 int s[]={3, 7, 2, 1, 5};
+	    	 CArray oArray(s, 5);
+	    	 oArray[1] = 9;
+	    	 for (int i = 1; i <= 5; i++)
+	    	 {
+	    	 cout << oArray[i] << "  ";
+	    	 }
+	    	 cout << endl;
+	    	 return 0;
+	    	 }
+	    	 \end{verbatim}
+	    \end{flushleft}
+	    上面程序的输出结果为：
+	    \begin{Answers}[1]
+	    	9~7~2~1~5
+	    \end{Answers}
+	    
+	    \question
+	    阅读下面程序，写出输出结果。
+	    \begin{flushleft}
+	    	\wuhao
+		    \begin{verbatim}
+	    	#include <iostream>
+	    	using namespace std;
+	    	
+	    	template <class Type>
+	    	void Print(Type a[], int n)
+	    	{
+	    	for (int i = 0; i < n; i++)
+	    	{
+	    	cout << a[i] << "  ";
+	    	}
+	    	}
+	    	int main()
+	    	{
+	    	int a[] = { 5, 6, 8};
+	    	double b[] = {6.8, 9.6};
+	    	
+	    	Print(a, sizeof(a) / sizeof(int));
+	    	Print(b, 2);
+	    	cout << endl;
+	    	
+	    	return 0;
+	    	}
+		    \end{verbatim}
+		\end{flushleft}
+	    上面程序的输出结果为：
+	    \begin{Answers}[1]
+	    	5~6~8~6.8~9.6
+	    \end{Answers}
+	    
+	    \question
+	    阅读下面程序，写出输出结果。
+	    \begin{flushleft}
+	    	\wuhao
+		    \begin{verbatim}
+	    	#include <iostream>
+	    	using namespace std;
+	    	class CTest
+	    	{
+	    	public:
+	    	CTest(int iVar):m_iVar(iVar)
+	    	{
+	    	m_iCount++;
+	    	}
+	    	~CTest()
+	    	{
+	    	}
+	    	void Print() const;
+	    	static int GetCount()
+	    	{
+	    	return m_iCount;
+	    	}
+	    	private:
+	    	int m_iVar;
+	    	static int m_iCount;
+	    	};
+	    	int CTest::m_iCount = 0;
+	    	void CTest::Print() const
+	    	{
+	    	cout << this->m_iVar << "  " << this->m_iCount << "  ";
+	    	}
+	    	int main()
+	    	{
+	    	CTest oTest1(6);
+	    	oTest1.Print();
+	    	CTest oTest2(8);
+	    	oTest2.Print();
+	    	cout << CTest::GetCount();
+	    	cout << endl;
+	    	return 0;
+	    	}
+		    \end{verbatim}
+		\end{flushleft}
+	    上面程序的输出结果为：
+	    \begin{Answers}[1]
+	    	6~1~8~2~2
+	    \end{Answers}
+	    
+	    \question
+	    阅读下面程序，写出输出结果。
+	    \begin{flushleft}
+	    	\wuhao
+		    \begin{verbatim}
+	    	#include <iostream>
+	    	using namespace std;
+	    	class CTest
+	    	{
+	    	public:
+	    	CTest(int iX = 0, int iY = 0, int iZ = 0):m_iZ(iZ)
+	    	{
+	    	m_iX = iX;
+	    	m_iY = iY;
+	    	}
+	    	void Print()
+	    	{
+	    	cout << m_iX << endl;
+	    	cout << m_iY << endl;
+	    	}
+	    	void Print() const
+	    	{
+	    	cout << m_iZ << endl;
+	    	}
+	    	private:
+	    	int m_iX, m_iY;
+	    	const int m_iZ;
+	    	};
+	    	int main()
+	    	{
+	    	CTest oTest1;
+	    	oTest1.Print();
+	    	CTest oTest2(1, 6, 8);
+	    	oTest2.Print();
+	    	const CTest oTest3(6, 0, 18);
+	    	oTest3.Print();
+	    	cout << endl;
+	    	return 0;
+	    	}
+		    \end{verbatim}
+		\end{flushleft}
+	    上面程序的输出结果为：
+	    \begin{Answers}[1]
+	    	0~0~1~6~18
+	    \end{Answers}
+	    
+	    %编程题
+	    \MainQuestion{编程题}{本大题共2个小题，每小题10分，共20分}
+	    \question
+	    编写一个函数模板，用于求参数的绝对值，并编写测试程序进行测试。
+	    函数模板声明如下：
+	    \begin{flushleft}
+	    	\wuhao
+	    	\begin{verbatim}
+	    	template <class Type>
+	    	Type Abs(Type tVar)
+	    	\end{verbatim}
+	    \end{flushleft}
+	    \begin{Answers}[0]
+	    	\begin{flushleft}
+	    		\wuhao
+	    		\begin{verbatim}
+	    		#include <iostream>
+	    		using namespace std;
+	    		template <class Type>
+	    		Type Abs(Type tVar)
+	    		{
+	    		if (tVar >= 0) return tVar;
+	    		else return -tVar;
+	    		}
+	    		int main()
+	    		{cout << Abs(5) << endl;
+	    		cout << Abs(-5) << endl;
+	    		cout << Abs(2.5) << endl;
+	    		cout << Abs(-2.5) << endl;
+	    		return 0;}
+	    		\end{verbatim}
+	    	\end{flushleft}
+	    \end{Answers}
+	    
+	    \question
+	    定义一个复数类CComplex，定义带有2个参数（其中一个为缺省参数）的构造函数，显示复数值的函数Show()， 重载“+”运算符（用成员函数实现），并编写测试程序进行测试。
+	    \begin{Answers}[0]
+	    	\begin{flushleft}
+	    		\wuhao
+	    		\begin{verbatim}
+	    		#include <iostream>
+	    		using namespace std;
+	    		class CComplex
+	    		{
+	    		public:
+	    		CComplex(double dReal, double dImage = 0)
+	    		{
+	    		m_dReal = dReal;
+	    		m_dImage = dImage;
+	    		}
+	    		void Show()
+	    		{
+	    		cout << m_dReal;
+	    		if (m_dImage > 0)
+	    		{cout << "+" << m_dImage << "i" << endl;}
+	    		else if(m_dImage < 0)
+	    		{cout << "-" << -m_dImage << "i" << endl;}
+	    		}
+	    		CComplex operator+(const CComplex &obj)
+	    		{
+	    		CComplex objTemp(m_dReal + obj.m_dReal, m_dImage + obj.m_dImage);
+	    		return objTemp;
+	    		}
+	    		private:
+	    		double m_dReal, m_dImage;
+	    		};
+	    		int main()
+	    		{
+	    		CComplex obj1(2, 6), obj2(3, 8), obj3(0);
+	    		obj1.Show();
+	    		obj2.Show();
+	    		obj3.Show()；
+	    		obj3 = obj1 + obj2;
+	    		obj3.Show();
+	    		return 0;
+	    		}
+	    		\end{verbatim}
+	    	\end{flushleft}	
+	    \end{Answers}
+	\end{questions}
+\end{document}

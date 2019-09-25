@@ -1,0 +1,134 @@
+%此文件是关于各类题型的设计，依次为选择题、填空题、判断题、其他主观大题
+
+%选择题答题线
+\newcommand{\selectline}{%在题目内容中使用
+	\uline{\hspace*{1cm}}
+}
+
+%选择题答题括号
+\newcommand{\selectbracket}[1]{%作为题目结束行末尾的预留答题空白
+	\hfill
+	\ifprintanswers
+	(\makebox[1.2em][c]{\rmfamily\bfseries #1})
+	\else
+	(\hspace{1.2em})
+	\fi
+	\\
+}
+
+%三种选项排版方式
+\newcommand{\hchoices}[4]{%行式
+	\makebox[\linewidth][l]{
+		\begin{oneparchoices}
+			\choice #1
+			\hspace{\stretch{2}}
+			\choice #2
+			\hspace{\stretch{2}}
+			\choice #3
+			\hspace{\stretch{2}}
+			\choice #4
+			\hspace{\stretch{1}}
+		\end{oneparchoices}
+	}
+	\\
+}
+\newcommand{\vchoices}[4]{%列式
+	\renewcommand\arraystretch{0.4}
+	\begin{tabularx}{\linewidth}
+		{*{1}{>{\flushleft\arraybackslash}X}}
+		A.~#1 \\
+		B.~#2 \\ 
+		C.~#3 \\
+		D.~#4 \\
+	\end{tabularx}
+}
+\newcommand{\arraychoices}[4]{%矩阵式
+	\renewcommand\arraystretch{0.4}
+	\begin{tabularx}{\linewidth}
+		{*{2}{>{\flushleft\arraybackslash}X}}
+		A.~#1 & B.~#2 \\
+		C.~#3 & D.~#4 \\
+	\end{tabularx}
+}
+%定义选项长度命令
+\newlength{\awidth}%A选项宽度
+\newlength{\bwidth}%B选项宽度
+\newlength{\cwidth}%C选项宽度
+\newlength{\dwidth}%D选项宽度
+\newlength{\maxwidth}%最大选项宽度
+\newlength{\fourthwidth}%四分之一行宽
+\newlength{\halfwidth}%二分之一行宽
+\setlength{\fourthwidth}{0.25\linewidth}
+\setlength{\halfwidth}{0.5\linewidth}
+%根据选项最大长度选择选项排版方式
+\newcommand{\Choices}[4]{
+	%设置初值
+	\settowidth\awidth{A.~#1}
+	\settowidth\bwidth{B.~#2}
+	\settowidth\cwidth{C.~#3}
+	\settowidth\dwidth{D.~#4}
+	\setlength{\maxwidth}{\awidth}
+	%筛选出最大选项宽度
+	\ifthenelse{\maxwidth<\bwidth}{\setlength{\maxwidth}{\bwidth}}{}
+	\ifthenelse{\maxwidth<\cwidth}{\setlength{\maxwidth}{\cwidth}}{}
+	\ifthenelse{\maxwidth<\dwidth}{\setlength{\maxwidth}{\dwidth}}{}
+	%最大宽度与不同倍数的行宽比较从而选择合适的选项排版方案
+	\ifthenelse{\maxwidth<\fourthwidth}{\hchoices{#1}{#2}{#3}{#4}}{
+		\ifthenelse{\maxwidth<\halfwidth}{\arraychoices{#1}{#2}{#3}{#4}}
+		{\vchoices{#1}{#2}{#3}{#4}}	
+	}
+}
+
+%用于选项内容是图片的选择题，进行行式排版，四个选项图片需要并排放在一张图片中
+\newcommand{\onegraphchoices}[1]{
+	\onegraphc[1]{#1}
+	\begin{tabularx}{\linewidth}{*{4}{>{\centering\arraybackslash}X}}
+		A & B & C & D \\
+	\end{tabularx}
+}
+
+%填空题答题线
+\newlength\answerlength%新定义答案长度命令
+\newcommand{\blank}[2][0.2cm]{
+	\settowidth\answerlength{#2}
+	\ifprintanswers
+	{\bfseries\kaishu\boldmath
+	\uline{\hspace{#1} #2 \hspace{#1}}}
+	\else
+	\uline{\hspace{#1}\hspace{\answerlength}\hspace{#1}}
+	\fi
+}
+
+%对错符号，可作为的判断题答案
+\newcommand{\true}{${\displaystyle\surd}$}
+\newcommand{\flase}{${\displaystyle\times}$}
+
+%其他主观大题答题空白设计
+\newlength\lineheight%一行的高度（行间距+当前字号下字体的高度）
+\newlength\Hheight
+\settoheight{\Hheight}{高}
+\setlength\lineheight{1.5\Hheight}
+%其他主观大题参考答案环境
+\newenvironment{Answers}[1][3]%初始预留空白为3行
+{
+	%\shadedsolutions
+	\renewcommand{\solutiontitle}{\noindent
+		{\bfseries\kaishu\wuhao\boldmath 参考答案：}\par\noindent}%设置参考答案标题格式
+	\SolutionEmphasis{\bfseries\kaishu\wuhao\boldmath}%参考答案的强调方式
+	\begin{solution}[#1\lineheight]
+	}{		
+	\end{solution}
+}
+%用于参考答案中带有图片的主观大题
+\newcommand{\answerwithgraph}[2][3]
+{
+	\ifprintanswers%输出答案
+	{\bfseries\kaishu\wuhao\boldmath 参考答案：\\
+	#2}	
+	\else
+		\if@cancelspace%关闭主观大题的预留答题空白
+		\else
+	    \vspace*{#1\lineheight}
+	    \fi
+	\fi
+}

@@ -1,0 +1,33 @@
+%插图功能的设计
+
+\graphicspath{{figures/}}%图片目录
+\newcommand\onegraphl[2][0.4]{%在一行的左侧插入一张图片
+	\begin{flushleft}
+		\includegraphics[width=#1\linewidth]{#2}
+	\end{flushleft}
+}
+\newcommand\onegraphc[2][0.4]{%在一行的中间插入一张图片
+	\begin{center}
+		\includegraphics[width=#1\linewidth]{#2}
+	\end{center}
+}
+\newcommand\onegraphr[2][0.4]{%在一行的右侧插入一张图片
+	\begin{flushright}
+		\includegraphics[width=#1\linewidth]{#2}
+	\end{flushright}
+}
+\newcommand\twograph[3][0.4]{%在一行中插入两张图片
+	\begin{center}
+		\includegraphics[width=#1\linewidth]{#2}
+		\hspace{0.1\linewidth}
+		\includegraphics[width=#1\linewidth]{#3}
+	\end{center}
+}
+
+
+
+
+
+
+
+

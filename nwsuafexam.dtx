@@ -1,0 +1,925 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2015 by Geng Nan <nangeng@qq.com>
+%
+% This file is part of the nwsuafexam package project.
+% ---------------------------------------------------
+%
+% It may be distributed under the conditions of the LaTeX Project Public
+% License, either version 1.2 of this license or (at your option) any
+% later version. The latest version of this license is in
+%    http://www.latex-project.org/lppl.txt
+% and version 1.2 or later is part of all distributions of LaTeX
+% version 1999/12/01 or later.
+%
+%<*!(cfg|fd)>
+% \fi
+%
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+%%
+%
+% \CheckSum{0}
+%
+% \iffalse meta-comment
+%</!(cfg|fd)>
+%
+%<*driver>
+\ProvidesFile{nwsuafexam.dtx}
+%</driver>
+%
+%<cls>\NeedsTeXFormat{LaTeX2e}[2007/10/19]
+%<cls>\ProvidesClass{nwsuafexam}
+%<cfg>\ProvidesFile{nwsuafexam.cfg}
+  [2016/01/04 v0.1 nwsuafexam
+%<cls>   document class]
+%<cfg>   configuration file]
+%
+%<*driver>
+   bundle source file]
+%</driver>
+%
+%<*driver>
+\documentclass[a4paper]{ltxdoc}
+\usepackage{ctex}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+ \topmargin 0.5 true cm
+ \oddsidemargin 1 true cm
+ \evensidemargin 1 true cm
+ \textheight 21 true cm
+ \textwidth 14 true cm
+\EnableCrossrefs
+ %\DisableCrossrefs % Say \DisableCrossrefs if index is ready
+\CodelineIndex
+\RecordChanges      % Gather update information
+ %\OnlyDescription  % comment out for implementation details
+ %\OldMakeindex     % use if your MakeIndex is pre-v2.9
+\hypersetup{colorlinks,linkcolor=blue,citecolor=blue}
+\begin{document}  
+ \DocInput{nwsuafexam.dtx}
+\end{document}
+%</driver>
+%
+% \fi
+%
+%
+% \changes{v0.1}{2016/01/04}{Initial version}
+%
+%
+% \DoNotIndex{\begin,\end,\begingroup,\endgroup}
+% \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
+% \DoNotIndex{\let,\def,\xdef,\newcommand,\renewcommand}
+% \DoNotIndex{\expandafter,\csname,\endcsname,\relax,\protect}
+% \DoNotIndex{\Huge,\huge,\LARGE,\Large,\large,\normalsize}
+% \DoNotIndex{\small,\footnotesize,\scriptsize,\tiny}
+% \DoNotIndex{\normalfont,\bfseries,\slshape,\interlinepenalty}
+% \DoNotIndex{\hfil,\par,\vskip,\vspace,\quad}
+% \DoNotIndex{\centering,\raggedright}
+% \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
+% \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
+% \DoNotIndex{\@@par}
+%
+%
+% \GetFileInfo{nwsuafexam.dtx}
+%
+%
+% \MakeShortVerb{\|}
+% \setcounter{StandardModuleDepth}{1}
+%
+%
+% \newcommand{\ctex}{\texttt{ctex}}
+% \newcommand{\nwsuafexam}{\texttt{nwsuafexam}}
+% \newcommand{\exam}{\texttt{exam}}
+% \newcommand{\colin}{\texttt{colinexam}}
+% \newcommand{\bhc}{\texttt{BHCexam}}
+% \newcommand{\nwsuaf}{{\heiti 西北农林科技大学}}
+% \newcommand{\cie}{{\heiti 信息工程学院}}
+% \newcommand{\nwcie}{{\heiti 西北农林科技大学信息工程学院}}
+%
+%
+% \setlength{\parskip}{0.75ex plus .2ex minus .5ex}
+% \renewcommand{\baselinestretch}{1.2}
+%
+% \makeatletter
+% \def\parg#1{\mbox{$\langle${\it #1\/}$\rangle$}}
+% \def\@smarg#1{{\tt\string{}\parg{#1}{\tt\string}}}
+% \def\@marg#1{{\tt\string{}{\rm #1}{\tt\string}}}
+% \def\marg{\@ifstar\@smarg\@marg}
+% \def\@soarg#1{{\tt[}\parg{#1}{\tt]}}
+% \def\@oarg#1{{\tt[}{\rm #1}{\tt]}}
+% \def\oarg{\@ifstar\@soarg\@oarg}
+% \makeatother
+%
+%
+% \title{\bf \nwsuafexam 宏包说明\thanks
+%   {这是\nwcie 耿楠发布的\LaTeX 宏包。本文件版本号为\fileversion{}，最后修改日期\filedate{}。}}
+% \author{\it 耿楠\thanks{nangeng@qq.com}}
+% \date{\small 日期：\today}
+% \maketitle
+%
+% \begin{abstract}
+% \nwsuafexam 宏包提供了一个\nwsuaf 试卷排版的\LaTeX{}文档类。
+% 该宏包的主要目的是为了实现\nwsuaf 试卷排版中内容与格式
+% 的分离，以期减轻\nwsuaf 广大教师的试卷排版工作。通过内容与格
+% 式的分离，使广大教师能够更加专注于试卷内容的组织和编写。
+%
+% \nwsuafexam 包括\texttt{nwsuafexam.cls}文档类和配置文件
+% \texttt{nwsuafexam.cfg}两个文件，\texttt{nwsuafexam.cls}文档类用
+% 于进行试卷格式控制，\texttt{nwsuafexam.cfg}文件用于进行必须的变量赋
+% 值设置。
+%
+% \nwsuafexam 宏包由\nwcie 耿楠制作并负责维护。
+% \end{abstract}
+%
+% \tableofcontents
+% \newpage
+%
+% \section{简介}
+%
+% 本宏包以 \exam 为底层文档类，通过修改由鲍宏昌开发的\bhc 宏包实现。
+% \bhc 宏包的部分源代码来自于盖鹤麟开发的\colin。但不知道什么原因
+% 盖鹤麟自2004年就一直没有发布更新，\colin 仍然使用CCT实现中文支持，而
+% 缺乏对XeTeX的支持。2011年7月，鲍宏昌在 \colin 的基础上改用 \ctex 实
+% 现中文支持，采用UTF8编码支持 XeLaTeX，并使用\texttt{doc}
+% 和\texttt{docstrip}工具编写了宏包文档，增加了一些新
+% 的功能，在此基础上，\nwcie 耿楠进一步对 \bhc 宏包进行了调整和修改，
+% 使其符合\nwsuaf 教务处规定的试卷排版格式，并将宏包命名为\nwsuafexam。
+%
+% 本宏包延续了 \bhc 、 \colin 和\exam 的特点，能让一个刚刚接触
+% \LaTeX 的初学者轻松地实现~\nwsuaf~试卷排版。希望\nwsuafexam 能够提高
+% \nwsuaf 广大教师的工作效率，并把注意力放在试卷的内容上。
+% 
+% \nwsuafexam 由两个文件构成：文档类\texttt{nwsuafexam.cls}和配置文件
+% \texttt{nwsuafexam.cfg}，后者定义了一些常用的参数。
+%
+% {\kaishu
+% 这两个文件可以通过用XeLaTeX编译\texttt{nwsuafexam.ins}文件来得到，
+% 而这份说明文档可以通过用XeLaTeX编译\texttt{nwsuafexam.dtx}文件来得到。
+% 编译说明文档需要\ctex{}宏包，为了生成正确的索引和版本记录，
+% 需要使用如下命令}
+% \begin{verbatim}
+% makeindex -s gind.ist -o nwsuafexam.ind nwsuafexam.idx
+% makeindex -s gglo.ist -o nwsuafexam.gls nwsuafexam.glo
+% \end{verbatim}
+%
+% \section{一个简单的例子}
+%
+% 用\nwsuafexam 排版一张试卷其实很简单。如果你准备对试卷的排版进行
+% 更细致的设置，那么请参考\exam 的文档。
+%
+% \subsection{\texttt{documentclass} 命令}
+% \label{sec:BasicDocumentclass}
+%
+% 要使用\nwsuafexam 文档类，你的\verb"\documentclass" 命令应该是
+% \begin{verbatim}
+%  \documentclass{nwsuafexam}
+% \end{verbatim}
+% 同时，\nwsuafexam 文档类引入不同的参数，以实现不同的设置，如，当需要
+% 使用密封试卷时，可以使用选项\verb"sealedpaper"
+% \begin{verbatim}
+% \documentclass[sealedpaper]{nwsuafexam}
+% \end{verbatim}
+% 更多的选项，请参考\ref{sec:Options}。
+%
+% \subsection{输出标题和考试须知}
+% \DescribeMacro{\maketitle}
+% \DescribeMacro{\notice}
+% 在试卷上输出标题和考试须知
+% \begin{verbatim}
+%   \maketitle
+%   \notice 
+% \end{verbatim}
+% 关于标题和考试须知中变量的设置，请参考\ref{sec:Variable}。
+%
+% \subsection{题目}
+% \label{sec:Example}
+% \DescribeMacro{\question} \DescribeMacro{\shortblk}
+% \DescribeMacro{\singlelinech}
+% \DescribeMacro{\part}在\verb"questions"环境中用\verb"\question"输入题
+% 目。在\verb"parts"环境中用\verb"\part"输入大题的小问。
+% 用\verb"\shortblk"、\verb"\middleblk"和\verb"\longblk"输入填空题的答
+% 案，并确定下画线的长度。
+% 用\verb"\singlelinech"、\verb"\doublelinesch"和\verb"\fourlinesch"输
+% 入选择题的选项，并确定选项的显示方式。在\verb"questions"环境中
+% 用\verb"\setmainitem"设置各题型的提示语，\verb"\mainitem"显示各题型的
+% 提示语。
+% \begin{verbatim}
+%       \begin{questions}%               
+%               \setmainitem{名词解释}{每小题2分，共30分，请为列出的名词进行解释}
+%               \mainitem
+%               \question 名词解释1 数组
+%               \question 名词解释2 指针
+%               
+%               \setmainitem{填空题}{每空2分，共30分，请在每题空白处填写正确答案}
+%               \mainitem
+%               \question 这是第1 道填空题\shortblk{答案，不显示答案时显示短横线}
+%               \question 这是第2 道填空题\middleblk{答案，不显示答案时显示横线}
+%               \question 这是第3 道填空题\longblk{答案，不显示答案时显示长横线}
+%               
+%               \setmainitem{选择题}{每小题2分，共30分，请在每题后的括号里填写正确的选项}
+%               \mainitem
+%               \question 这是第1 道选择题, 四个选项显示在一行 \selectedbox{A} \\
+%               \singlelinech{选项1}{选项2}{选项3}{选项4}
+%               \question 这是第2 道选择题, 四个选项显示在两行 \selectedbox{A} \\
+%               \doublelinech{选项1}{选项2}{选项3}{选项4}
+%               \question 这是第3 道选择题, 四个选项显示在四行 \selectedbox{A} \\
+%               \quarterlinech{选项1}{选项2}{选项3}{选项4}
+%               
+%               \setmainitem{判断题}{每小题2分，共30分，请在每题后的括号里填写正确的判断结果}
+%               \mainitem
+%               \question 判断题1 可以将数组名作为左值 \selectedbox{A}
+%               \question 判断题2 指针变量可以加减 \selectedbox{A}
+%               
+%               \setmainitem{简答题}{共30分，每小题分标在小题后，请简明扼要的对每个题目进行解答}
+%               \mainitem
+%               \question 简答题1 是一道简答题
+%               \begin{parts}
+%                       \part[3] 第1 小问
+%                       \part[5] 第2 小问
+%               \end{parts}
+%                
+%               \setmainitem{论述题}{共30分，每小题分标在小题后，请对下面的题目进行全面解答}
+%               \mainitem
+%               \question 论述题1 试论数组与指针结合的高级操作
+%               \begin{parts}
+%                       \part[5] 第1 小问
+%                       \part[5] 第2 小问
+%               \end{parts} 
+%               
+%               \setmainitem{计算题}{共30分，每小题分标在小题后，请计算各个题目，并对详细表达计算过程}
+%               \mainitem
+%               \question 计算题1 计算论数组与指针的运算运算结果
+%               \begin{parts}
+%                       \part[10] 第1 小问
+%                       \part[15] 第2 小问
+%               \end{parts} 
+%               
+%               \setmainitem{改错题}{每小题2分，共30分，请改正每题中的错误}
+%               \mainitem
+%               \question 改错题1 对数组名进行++运算可指向下一个元素。
+%               \question 改错题2 函数可以返回多个值。
+%
+%               \setmainitem{程序设计题}{共30分，每小题分标在小题后，请分析个题目，并详细表达设计过程}
+%               \mainitem
+%               \question 程序设计题1 设计程序实现两个数的交换
+%               \question 程序设计题2 设计递归程序实现快速排序
+%                       
+%               \setmainitem{制图题}{共30分，请分析个题目，并详细制图设计过程}
+%               \mainitem
+%               \question 制图题1 请绘制折半查找的程序流程图
+%               
+%               \setmainitem{其它题型}{共30分，请分析个题目，并详细制图设计过程}
+%               \mainitem
+%               \question 其它题型1 设计泛型算法的流程图、程序和测试用例
+%               \begin{parts}
+%                       \part[10] 第1 流程图
+%                       \part[6] 第2 程序
+%                       \part[4] 第2 测试用例
+%               \end{parts}     
+%                                                       
+%       \end{questions}
+% \end{verbatim}
+% 关于题目的更多内容，请参考\ref{sec:Environment}。
+%
+% \section{使用帮助}
+%
+% \subsection{选项}
+% \label{sec:Options}
+%
+
+% 宏包的选项用于改变一些缺省的设置。虽然缺省的设置基本能过满足一般用户的
+% 使用需要，但用户也可以根据自己的情况，使用这些选项。
+%
+% \begin{description}
+% \item[answers]     在每一个问题后附上答案。
+% \item[sealedpaper]  是否为密封试卷（缺省为普通试卷）。
+% \item[contitemcnt]  是否为各小题题目进行连续编号（缺省为不连续编号）
+% \item[noindent]    没有缩进。
+% \item[prescorebox]    显示前置评分框（缺省为不显示）。
+% \end{description}
+%
+% \subsection{变量}
+% \label{sec:Variable}
+% 本宏包是参考\nwsuaf 教务处颁布的试卷规范的开发的，
+% 默认的变量值可以在\texttt{nwsuafexam.cfg}中设置，当然
+% 你也可以在使用相关命令之前使用以下命令进行更改。\\\\
+% \DescribeMacro{\papertitle}
+% 设置标题信息。
+% \begin{quote}
+% |\papertitle|\marg*{TEXT}
+% \end{quote}
+% \DescribeMacro{\startyear}
+% 设置副标题中的学年起始年。
+% \begin{quote}     
+% |\startyear|\marg*{TEXT}
+% \end{quote}
+% \DescribeMacro{\closeyear}
+% 设置副标题中的学年结束年。
+% \begin{quote}     
+% |\closeyear|\marg*{TEXT}
+% \end{quote}
+% \DescribeMacro{\semester}
+% 设置副标题中的学期号。
+% \begin{quote}     
+% |\semester|\marg*{TEXT}
+% \end{quote}
+% \DescribeMacro{\subject}
+% 设置副标题中的课程名称。
+% \begin{quote}     
+% |\subject|\marg*{TEXT}
+% \end{quote}
+% \DescribeMacro{\papertype}
+% 设置副标题中开闭卷类型。
+% \begin{quote}     
+% |\papertype|\marg*{TEXT}
+% \end{quote}
+% \DescribeMacro{\papermaker}
+% 设置副标题中的命题教师。
+% \begin{quote}     
+% |\papermaker|\marg*{TEXT}
+% \end{quote}
+% \DescribeMacro{\papermsg}
+% 设置总分和考试时间信息，\parg{num1}为总分，\parg{num2}为考试时间。
+% \begin{quote}
+% |\papermsg|\marg*{num1}\marg*{num2}
+% \end{quote}
+% \DescribeMacro{\setmainitem}
+% 设置大题题目名称，小分、总分和题目描述信息，\parg{num1}为题目名称，
+% \parg{num2}为小分、总分和题目描述信息。
+% \begin{quote}
+% |\setmainitem|\marg*{TEXT}\marg*{TEXT}
+% \end{quote}
+%
+% \subsection{环境}
+% \label{sec:Environment} 
+% 经常使用的环境有\verb"questions"环境、\verb"parts"环境，
+% 关于它们的简单示例，请参考\ref{sec:Example}，这里做一点补充说明，
+% 更详细的介绍，请参考~\exam~文档。\\\\
+% 在排版简答题时需要用\verb"\part"命令输入各小问的分值，宏包会自动算出总分并显示在该简答题的第一行。
+% 当该道简答题没有小问时，则要用\verb"\question"命令输入该问题的分值。
+% 
+% \begin{verbatim}
+%  ...
+%  \shortans
+%  \question 这是一道简答题
+%  \begin{parts}[
+%  \part[3] 第1小问3分。
+%  \part[3] 第2小问3分。
+%  \part[4] 第3小问4分。
+%  \end{parts}
+%  \question[12] 这是一道没有小问的简答题，这道题有12分
+%  ... 
+% \end{verbatim}
+% 在\verb"\question"后新建\verb"solution"环境，在其中输入该问题的解答，
+% 在不显示答案的情况下，该问题后会预留答题空间。
+% \begin{verbatim}
+%  ...
+%  \shortans
+%  \question 这是一道简答题
+%  \begin{solution}
+%  这是解答,不显示答案的情况下则这个问题后预留答题空间。
+%  \end{solution}
+%  ... 
+% \end{verbatim}
+%
+% \subsection{常用命令}
+% 
+% \DescribeMacro{\newpage}
+% 每道问题的间距是弹性设置的，你只要在想换页的地方输入\verb"\newpage"命令，
+% 则上一页的各问题间距会自动调整到最美观的效果。\\
+% \DescribeMacro{\mininotice}
+% 在一行内输出精简的考试注意事项。\\
+% \DescribeMacro{\printmalol}
+% 在当前页为正面时，在左边插入装订线（仅在使用sealedpaper选项时有效）。\\
+% \DescribeMacro{\printmalor}
+% 在当前页为反面时，在右边插入装订线（仅在使用sealedpaper选项时有效）。\\
+%
+% \StopEventually{}
+%
+% \section{源代码说明}
+%
+% \subsection{选项}
+%
+%
+% 处理~\nwsuafexam~文档类的选项
+%
+% \begin{macro}{\@sealedpaper}
+% 是否为密封卷
+%    \begin{macrocode}
+%<*cls>
+\newif\if@sealedpaper \@sealedpaperfalse
+\DeclareOption{sealedpaper}{\@sealedpapertrue}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@contitemcnt}
+% 小题题目是否连续编号
+%    \begin{macrocode}
+%<*cls>
+\newif\if@contitemcnt \@contitemcntfalse
+\DeclareOption{contitemcnt}{\@contitemcnttrue}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+%
+% 不缩进，缺省为缩进
+%    \begin{macrocode}
+%<*cls>
+\newif\if@noindent \@noindentfalse
+\DeclareOption{noindent}{\@noindenttrue}
+%</cls>
+%    \end{macrocode}
+%
+% 显示答案的方式，缺省不显示答案
+%    \begin{macrocode}
+%<cls>\DeclareOption{answers}{\PassOptionsToClass{\CurrentOption}{exam}}
+%    \end{macrocode}
+
+% \begin{macro}{\@prescorebox}
+% 显示前置计分框，缺省为不显示。
+%    \begin{macrocode}
+%<*cls>
+\newif\if@prescorebox \@prescoreboxfalse
+\DeclareOption{prescorebox}{\@prescoreboxtrue}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+%
+% 把没有定义的选项传递给缺省的文档类
+%    \begin{macrocode}
+%<cls>\DeclareOption*{\PassOptionsToClass{\CurrentOption}{exam}}
+%    \end{macrocode}
+%
+% 处理选项
+%    \begin{macrocode}
+%<cls>\ProcessOptions
+%    \end{macrocode}
+%
+% 装入缺省的文档类
+%    \begin{macrocode}
+%<cls>\LoadClass[addpoints]{exam}
+%    \end{macrocode}
+% 
+% \subsection{加载宏包}
+%
+% 导入ctex类
+%    \begin{macrocode}
+%<*cls>
+\RequirePackage[zihao=-4]{ctex}
+%</cls>
+%    \end{macrocode}
+%
+% \begin{macro}{\RequirePackage}
+% 需要使用的其它宏包
+%    \begin{macrocode}
+%<*cls>
+\RequirePackage{ifpdf,ifxetex}
+\RequirePackage{amsmath,amssymb,amsthm,bm,bbding,pifont,dsfont}
+\RequirePackage{mathtools}
+\RequirePackage{paralist,cases,tabularx}
+\RequirePackage{pstricks,pst-plot,xcolor,graphicx}
+\RequirePackage{ulem}
+%</cls>
+%    \end{macrocode}
+% 
+% 用geometry宏包进行页面设置
+%    \begin{macrocode}
+%<*cls>
+\if@sealedpaper
+\marginparwidth = 2cm
+\RequirePackage[paper=a4paper,hmargin={3.3cm,3.3cm},vmargin={3.3cm,3.3cm},
+marginparsep=0.5cm,hoffset=0cm,voffset=0cm,footnotesep=0.5cm,
+headsep=0.5cm,twoside]{geometry}
+\else
+\RequirePackage[papersize={210mm,297mm},hmargin={3.3cm,3.3cm},vmargin={3.3cm,3.3cm},
+marginparsep=0.5cm,hoffset=0cm,voffset=0cm,footnotesep=0.5cm,
+headsep=0.5cm]{geometry}
+\fi
+%</cls>
+%    \end{macrocode}
+%\end{macro}
+%
+% \subsection{自定义设置}
+%行距、页眉、页脚
+%    \begin{macrocode}
+%<*cls>
+\renewcommand{\baselinestretch}{1.5}
+\pagestyle{headandfoot}
+\header{}{}{}
+\footer{}{\small \quad 第~\thepage~页(共~\numpages~页)}{}
+%</cls>
+%    \end{macrocode}
+%
+% 分值显示
+%    \begin{macrocode}
+%<*cls>
+\pointname{分}
+\pointformat{\kaishu (\thepoints)}
+%</cls>
+%    \end{macrocode}
+%
+% 问题的显示
+%    \begin{macrocode}
+%<*cls>
+\renewcommand{\questionshook}{
+  \settowidth{\leftmargin}{22.\hskip\labelsep}
+  \if@noindent \setlength\leftmargin{0pt} \fi
+}
+\renewcommand{\thepartno}{\arabic{partno}}
+\renewcommand{\partlabel}{(\thepartno)}
+\renewcommand{\partshook}{
+  \settowidth{\leftmargin}{(3).\hskip\labelsep}
+  \if@noindent \setlength\leftmargin{0pt} \fi
+}
+%</cls>
+%    \end{macrocode}
+%
+% 解答的显示
+%    \begin{macrocode}
+%<*cls>
+\newif\if@cancelspace \@cancelspacetrue
+\renewcommand{\solutiontitle}{\noindent 解：\noindent}
+\renewenvironment{solution}%
+  {%
+    \ifprintanswers
+        %\unskip
+      \begingroup
+      \Solution@Emphasis
+      \begin{TheSolution}%
+    \else
+      \if@cancelspace
+        %\unskip
+      \else
+        \par
+        \penalty 0
+        \vfill%
+        \if@prescorebox \if@sufscorebox \sufscorebox \fi \fi
+      \fi
+      \setbox\z@\vbox\bgroup
+    \fi
+  }{%
+    \ifprintanswers
+      \end{TheSolution}%
+      \endgroup
+    \else
+      \egroup
+    \fi
+  }%
+%</cls>
+%    \end{macrocode}
+%
+% \subsection{新的命令和环境}
+%
+% \begin{macro}{\printmlor}
+% \begin{macro}{\printmlol}
+% 装订线
+%    \begin{macrocode}
+%<*cls>
+\if@sealedpaper
+\newsavebox{\gutterl}
+\sbox{\gutterl}{
+\begin{minipage}{0.7\paperheight}
+\begin{center}
+  \heiti 学生院（系）：\uline{\hspace{15ex}} \quad
+  学号：\uline{\hspace{15ex}} \quad
+  姓名：\uline{\hspace{15ex}} \quad
+  专业班级：\uline{\hspace{15ex}} \quad \\
+  \vspace{3ex}
+  \dotfill 装 \dotfill 订 \dotfill 线 \dotfill
+\end{center}
+\end{minipage}
+}
+\newsavebox{\gutterr}
+\sbox{\gutterr}{
+\begin{minipage}{0.7\paperheight}
+\begin{center}
+\heiti \hfill 请 \hfill 不 \hfill 要 \hfill 在 \hfill
+ 装 \hfill 订 \hfill 线 \hfill 内 \hfill 答 \hfill 题 \hfill \\
+\vspace{3ex}
+\dotfill 装 \dotfill 订 \dotfill 线 \dotfill
+\end{center}
+\end{minipage}
+}
+\newcommand{\printmlol}{
+\marginpar{\rotatebox{90}{\usebox{\gutterl}}}
+}
+\newcommand{\printmlor}{
+\marginpar{\rotatebox{-90}{\usebox{\gutterr}}}
+}
+\reversemarginpar
+\fi
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\papertitle}
+% \begin{macro}{\startyear}
+% \begin{macro}{\closeyear}
+% \begin{macro}{\semester}
+% \begin{macro}{\subject}
+% \begin{macro}{\papertype}
+% \begin{macro}{\papermaker}
+% 标题
+%    \begin{macrocode}
+%<*cls>
+\newcommand\papertitle[1]{\def\@papertitle{#1}}
+\newcommand\startyear[1]{\def\@startyear{#1}}
+\newcommand\closeyear[1]{\def\@closeyear{#1}}
+\newcommand\semester[1]{\def\@semester{#1}}
+\newcommand\subject[1]{\def\@subject{#1}}
+\newcommand\papertype[1]{\def\@papertype{#1}}
+\newcommand\papermaker[1]{\def\@papermaker{#1}}
+\renewcommand\maketitle{
+  \begin{center}{\heiti \large{\@papertitle}}\end{center}
+  \begin{center}{\heiti \large{\@startyear$\sim$\@closeyear 学年第
+        \@semester 学期《\@subject》课程\uline{\songti \@papertype}卷}}\end{center}
+  \if@sealedpaper
+          \begin{center} \heiti 
+                \begin{tabularx}{\textwidth}{X<{\centering}X<{\centering}X<{\centering}X<{\centering}X<{\centering}X<{\centering}}
+                        命题教师： & \@papermaker & 审题教师：&  & 考试成绩：& \\
+                        \cline{2-2}\cline{4-4}\cline{6-6}                       
+                \end{tabularx}\\        
+                \vspace{0.5em}   
+                \hrulefill
+          \end{center}
+          \marginpar{\rotatebox{90}{\usebox{\gutterl}}}
+  \else
+          \begin{center} \heiti 
+                \begin{tabularx}{\textwidth}{X<{\centering}X<{\centering}X<{\centering}X<{\centering}X<{\centering}X<{\centering}}
+                        专业班级： & & 命题教师：& \@papermaker & 审题教师：& \\
+                        \cline{2-2}\cline{4-4}\cline{6-6}
+                        学生姓名： & & 学~~~~~~号： & & 考试成绩： & \\
+                        \cline{2-2}\cline{4-4}\cline{6-6}
+                \end{tabularx}\\
+                \vspace{0.5em}   
+                \hrulefill
+          \end{center}
+          \fi }
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\papermsg}
+% \begin{macro}{\mininotice}
+% 一行内显示考试时间和考试总分
+%    \begin{macrocode}
+%<*cls>
+\newcommand\papermsg[2]{
+  \def\@totalscore{#1}
+  \def\@duration{#2}
+}
+\newcommand\mininotice{
+  \begin{center}{
+    \kaishu (本试卷满分~\@totalscore~分, 考试时间~\@duration~分钟)}
+  \end{center}
+}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\notice}
+% 注意事项
+%    \begin{macrocode}
+%<*cls>
+\newcommand{\notice}{
+  \heiti 注意事项： \songti
+  \begin{enumerate}
+  \item 答卷前, 考生务必将院系、学号、姓名、专业班级等填写清楚.
+  \item 本试卷共~\numquestions{}~道试题, 满分~\@totalscore~分,考试时间~\@duration~分钟.
+  \end{enumerate}
+}
+%</cls>
+%    \end{macrocode}
+%\end{macro}
+%
+% \begin{macro}{\prescorebox}
+% 前评分框
+%    \begin{macrocode}
+%<*cls>
+\newlength\@boxwidth
+\setlength\@boxwidth{0ex}
+\if@prescorebox \setlength\@boxwidth{18ex} \fi
+\newcommand\scorebox{
+  \heiti
+  \begin{minipage}{\@boxwidth}
+  \begin{tabular}{|c|c|}
+  \hline
+  得分 & 评卷人\\
+  \hline
+      &       \\
+  \hline
+  \end{tabular}
+  \end{minipage}
+}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\sufscorebox}
+% 后评分框
+%    \begin{macrocode}
+%<*cls>
+\newcommand{\sufscorebox}{
+  \hfill
+  \begin{tabular}{|l|l|}
+    \hline
+    得分 & \hspace*{1.5cm}\\
+    \hline
+  \end{tabular}
+  \bigskip
+}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\selectedbox}
+% 选择题答题框
+%    \begin{macrocode}
+%<*cls>
+\newcommand{\selectedbox}[1]{
+  \hfill
+  \ifprintanswers
+    (\uline{~#1~})
+  \else
+    (\uline{~\hspace{1cm}~})
+  \fi
+}
+%</cls>
+%    \end{macrocode}
+% \end{macro} 
+%
+% 一些参数及变量
+%    \begin{macrocode}
+%<*cfg>
+\def\@papertitle{西北农林科技大学本科课程考试试卷}
+\def\@startyear{2015}
+\def\@closeyear{2016}
+\def\@semester{1}
+\def\@subject{C~语言程序设计}
+\def\@papertype{闭}
+\def\@papermaker{耿楠}
+\def\@totalscore{100}
+\def\@duration{120}
+
+%</cfg>
+%<*cls>
+\newcounter{@mainitemcounter}
+\newif\if@sufscorebox \@sufscoreboxfalse
+%</cls>
+%    \end{macrocode}
+%
+% 归一化题型提示语
+% \begin{macro}{\setmainitem}
+% \begin{macro}{\mainitem}
+%    \begin{macrocode}
+%<*cls>
+\newcommand\setmainitem[2]{
+  \def\@mainitemname{#1}
+  \def\@mainitemdescription{#2}
+}
+\newcommand\mainitem{
+  \@sufscoreboxfalse
+  \stepcounter{@mainitemcounter}
+  \if@contitemcnt \else \setcounter{question}{0} \fi
+  \fullwidth{
+    \if@prescorebox \scorebox \else \@sufscoreboxtrue \fi
+    \begin{minipage}{\textwidth-\@boxwidth}
+      \heiti \chinese{@mainitemcounter}. \@mainitemname 
+      \kaishu （ \@mainitemdescription ）
+      \if@sufscorebox \sufscorebox \fi
+    \end{minipage}
+  }
+}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\shortblk}
+% \begin{macro}{\middleblk}
+% \begin{macro}{\longblk}
+% 填空题横线
+%    \begin{macrocode}
+%<*cls>
+\newcommand{\shortblk}[1]{
+  \ifprintanswers
+    \uline{~#1~}
+  \else
+    \uline{~\hspace{1cm}~}
+  \fi}
+\newcommand{\middleblk}[1]{
+  \ifprintanswers
+    \uline{~#1~}
+  \else
+    \uline{~\hspace{2cm}~}
+  \fi}
+\newcommand{\longblk}[1]{
+  \ifprintanswers
+    \uline{~#1~}
+  \else
+    \uline{~\hspace{3cm}~}
+  \fi}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\singlelinech}
+% \begin{macro}{\doublelinesch}
+% \begin{macro}{\fourlinesch}
+% 选择题的选项
+%    \begin{macrocode}
+%<*cls>
+\newcommand{\singlelinech}[4]{
+\renewcommand\arraystretch{1.4}
+\begin{tabularx}{\linewidth}{XXXX}
+\setlength\tabcolsep{0pt}
+(A) #1 & (B) #2 & (C) #3 & (D) #4 \\
+\end{tabularx}
+\unskip \unskip}
+\newcommand{\doublelinesch}[4]{
+\renewcommand\arraystretch{1.4}
+\begin{tabularx}{\linewidth}{XX}
+\setlength\tabcolsep{0pt}
+(A) #1 & (B) #2 \\
+(C) #3 & (D) #4
+\end{tabularx}
+\unskip \unskip}
+\newcommand{\fourlinesch}[4]{
+\renewcommand\arraystretch{1.4}
+\begin{tabularx}{\linewidth}{X}
+\setlength\tabcolsep{0pt}
+(A) #1 \\
+(B) #2 \\
+(C) #3 \\
+(D) #4 \\
+\end{tabularx}
+\unskip \unskip}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% 数学运算符号、单位
+%    \begin{macrocode}
+%<*cls>
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\le}{\leqslant}
+%<\cls>
+%    \end{macrocode}
+%
+% 读取配置文件
+%    \begin{macrocode}
+%<*cls>
+\AtEndOfPackage{\makeatletter\input{nwsuafexam.cfg}\makeatother}
+%</cls>
+%    \end{macrocode}
+%
+%
+
+% \Finale
+%
+% \setcounter{IndexColumns}{2}
+% \IndexPrologue{\section*{索引}}
+%
+% \GlossaryPrologue{\section*{版本更新}}
+%
+% \PrintIndex \PrintChanges
+\endinput
+
+\EnableCrossrefs
+
+% \endinput
+% Local Variables:
+% mode: doctex
+% TeX-master: t
+% End:

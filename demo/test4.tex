@@ -1,0 +1,171 @@
+% nwsuafexam文档类各个选项的含义：
+% answers     是否显示答案（缺省为不显示）
+% sealed      是否为密封试卷（缺省为普通）
+% contitemcnt 是否为各小题题目进行连续编号（缺省为不连续编号）
+% prescorebox 显示前置评分框（缺省为不显示）。
+% cancelspace 忽略答题空白（在answers下此项无效）
+% Tailscore   分值显示位置（题目开头或者题目右边界，缺省为题目开头）
+\documentclass[prescorebox,contitemcnt,answers]{nwsuafexam}%当调用或者取消一些选项参数时可能会造成试卷总页数改变，因此建议在调用或取消sealed、cancelspace、answers三个参数中的一个或几个时，先执行“工具”->“清理辅助文件”操作后再编译，否则会造成页数错乱。
+\begin{document}	
+	% 设置试卷基本信息
+	\papertitle{西北农林科技大学本科课程考试试卷}
+	\studyyear{2010}{2011}
+	\semester{2}
+	\subject{材料力学}
+	\testmethod{闭}
+	\proteacher{张XX}
+	\checkteacher{李XX}
+	\papercategory{A}
+	% 生成标题
+	\maketitle
+	%注意事项(提供两个环境参数，分别为总分数和考试时间，环境中默认已经定义了“本试卷共XX道试题, 满分XX分,考试时间XX分钟.”格式的一条注意事项，其余事项可在环境中使用\item命令输入)
+	\begin{notice}{100}{120}
+		\item 学生在答题前请先填写专业、学号、学院、姓名等基本信息。
+	\end{notice}
+	
+	%综合得分表
+	{\heiti
+		\begin{tabularx}{\textwidth}{|*{7}{>{\centering\arraybackslash}X|}}
+			\hline
+			题号 & 一 & 二 & 三 & 四 & 总分 & 审核人\\
+			\hline
+			得分 &    &    &    &    &     &      \\
+			\hline
+		\end{tabularx}}
+	\begin{questions}
+		%填空题
+		\MainQuestion{填空题}{本题共有5个小题，每空1分，共10分}
+		\question
+	    杆件变形的四种基本形式有：\blank{压缩}、\blank{剪切}、\blank{扭转}、\blank{弯曲}。
+		
+		\question
+		标距为100mm的标准试样，直径为10mm，拉断后测得伸长后的标距为123mm，缩颈处的最小直径为7mm，则该材料的伸长率$\delta=$\blank{$23\%$}，断面收缩率$\psi=$\blank{$51\%$}。
+		
+		\question
+		从强度角度出发，截面积相同的矩形杆件和圆形杆件，\blank{矩形杆件} 更适合做承受弯曲变形为主的梁。
+		
+		\question
+		某点的应力状态如图示，则主应力为：$\zeta_1=$\blank{$80MPa$}；$\zeta_2=$\blank{$30MPa$}。
+		\onegraphc{tu1}
+		
+		\question
+		平面图形对过其形心轴的静矩\blank{=}0(请填入 =，>, <)
+		
+		%单项选择题
+		\MainQuestion{单项选择题}{每小题2分，共20分}
+		\question
+		受扭圆轴，上面作用的扭矩T不变，当直径减小一半时，该截面上的最大切应力与原来的最大切应力之比为\selectline。\selectbracket{D}
+		\Choices{2}{4}{6}{8}
+		
+		\question
+		图示为一端固定的橡胶板条，若在加力前在板表面划条斜直线AB，那么加轴向拉力后AB线所在位置是\selectline ？(其中ab//AB//ce)\selectbracket{B}
+		\onegraphc[0.3]{tu2}
+		\Choices{ab}{ae}{ce}{ed}
+		
+		\question
+		根据切应力互等定理，图示的各单元体上的切应力正确的是\selectline。\selectbracket{A}
+		\onegraphchoices{tu3}
+		
+		\question
+		在平面图形的几何性质中，\selectline 的值可正、可负、也可为零。 \selectbracket{D}
+		\Choices{静矩和惯性矩}{极惯性矩和惯性矩}{惯性矩和惯性积}{静矩和惯性积}
+		
+		\question
+		受力情况相同的三种等截面梁，用$(\zeta_{max})_1$、$(\zeta_{max})_2$、$(\zeta_{max})_3$分别表示三根梁内横截面上的最大正应力，则下列说法正确的是\selectline。 \selectbracket{C}
+		\onegraphc[0.5]{tu4}
+		\Choices{$(\zeta_{max})_1=(\zeta_{max})_2=(\zeta_{max})_3$}{$(\zeta_{max})_1<(\zeta_{max})_2=(\zeta_{max})_3$}{$(\zeta_{max})_1=(\zeta_{max})_2<(\zeta_{max})_3$}{$(\zeta_{max})_1<(\zeta_{max})_2<(\zeta_{max})_3$}
+		
+		\question
+		在图示矩形截面上，剪力为Fs,欲求m-m线上的切应力，则公式$\tau=\dfrac{F_s\bullet S^*_z}{BI_z}$中, 下列说法 正确的是\selectline \selectbracket{D}
+		\onegraphc[0.2]{tu5}
+		\Choices{$S^*_z$为截面的阴影部分对$Z'$轴的静矩，$B=\delta$。}{$S^*_z$为截面的整个部分对$Z'$轴的静矩，$B=\delta$。}{$S^*_z$为截面的整个部分对$Z$轴的静矩，$B=\delta$。}{$S^*_z$为截面的阴影部分对$Z$轴的静矩，$B=\delta$。}
+		
+		\question
+		已知梁的$EI_z$为常数，长度为l ，欲使两的挠曲线在$x=l/3$处出现一拐点，则比值$m_1/m_2=$\selectline \selectbracket{C}
+		\onegraphc{tu6}
+		\Choices{2}{3}{1/2}{1/3}
+		
+		\question
+		如图所示单向均匀拉伸的板条。若受力前在其表面画上两个正方形a和b，则受力后正方形a、b分别变为\selectline。 不会产生温度应力。 \selectbracket{D}
+		\Choices{正方形、正方形}{正方形、菱形}{矩形、菱形}{矩形、正方形}
+		\onegraphc{tu7}
+		
+		\question
+		低碳钢试样拉伸至屈服时，有以下结论，请判断哪个是正确的\selectline。 \selectbracket{C}
+		\Choices{应力和塑性变形很快增加，因而认为材料失效；}{应力和塑性变形虽然很快增加，但不意味着材料失效；}{应力不增加，塑性变形很快增加，因而认为材料失效；}{应力不增加，塑性变形很快增加，但不意味着材料失效。}
+		
+		\question
+		图示拉杆头和拉杆的横截面均为圆形，拉杆头剪切面积$A=$\selectline。\selectbracket{B}
+		\onegraphc{tu8}
+		\Choices{$\pi Dh$}{$\pi dh$}{$\pi d^2/4$}{$\pi(D^2-d^2)/4$}
+		
+		%分析作图题
+		\MainQuestion{分析作图题}{每小题10分，共20分}
+		\question[10]
+		求做图示构件的内力图。
+		\onegraphr{tu9}
+		%当参考答案中需要插入图片时请用\answerwithgraph命令输入答案
+		\answerwithgraph{
+			剪力图 :\hfill (5分)
+			\onegraphc{tu15}
+			弯矩图:\hfill (5分)
+			\onegraphc{tu16}
+		}
+		
+		\question[10]
+		图示矩形等截面梁，试比较水平放置与竖立放置时最大弯曲正应力的比值$\zeta_{\text{平}}/\zeta_{\text{立}}$，说明那种放置方式合理。
+		\onegraphr{tu10}
+		\begin{Answers}[5]
+			由弯曲正应力$s=\dfrac{M}{W_z}$和矩形梁$W_z=\dfrac{bh^2}{6}$\hfill(4分)\\
+			可知：$\dfrac{s_{\text{平}}}{s_{\text{立}}}=\dfrac{W_{z\text{立}}}{W_{z\text{平}}}=\dfrac{b\cdot(4b)^2}{4b\cdot b^2}=4$\hfill(4分)\\
+			因此可知，梁竖立放置合理。\hfill(2分)
+		\end{Answers}
+		
+		%计算题
+		\MainQuestion{计算题}{共50分}
+		\question[15]
+		图示阶梯状直杆，若横截面积$A_1=200mm^2$,$A_2=300mm^2$,$A_3=400mm^2$。
+		\begin{parts}
+			\part[5]
+		    试求横截面$1-1$, $2-2$, $3-3$上的轴力，并作轴力图；
+			\part[5]
+			求横截面$3-3$上的应力。
+		\end{parts}
+		\onegraphr{tu11}
+	    \answerwithgraph{
+	    	$F_{N1}=-20KN(\text{压})$\\
+	    	$F_{N2}=-10KN(\text{压})$\\
+	    	$F_{N3}=10KN(\text{压})$\hfill (5分)\\
+	    	轴力图：\hfill (5分)
+	    	\onegraphc{tu17}
+	    	$s_3=\dfrac{F_{N3}}{A_3}=\dfrac{10'10^3}{40'10^{-6}}=25MPa$\hfill (5分)
+	    }
+		
+		\question[20]
+		已知某受力构件上危险点应力状态如图所示，已知材料的弹性模量$E=200GPa$，泊松比$\mu=0.3$，求该单元体的主应力、最大主应变及最大切应力（应力单位为MPa）。
+		\onegraphc[0.3]{tu14}
+		\answerwithgraph{
+			由题知$\zeta=50MP$是主应力之一，考虑其它两对平面，可视为平面应力，则应力圆为：
+			\onegraphc[0.3]{tu18}\hfill(5分)\\
+			解得其它两个主应力为80MPa和-20MPa，因此三个主应力分别为：\\
+			$\zeta_1=80MPa$，$\zeta_2=50MPa$，$\zeta_3=-20MPa$\hfill(5分)\\
+			最大切应力为$\eta=(\zeta_1-\zeta_3)/2=50MPa$\hfill(5分)\\
+			有广义胡克定律知最大主应变为：$\varepsilon_1=[\zeta_1-\mu(\zeta_2+\zeta_3)]/E=0.355\times 10^{-3}$\hfill(5分)\\
+		}
+		
+		\question[15]
+		图示实心轴和空心轴通过牙嵌式离合器连接在一起。已知轴的转速$n=100r/min$，传递的功率$P=7.5kw$，材料的许用应力$[\eta]=40MPa$，空心圆轴的内外径之比$d_2=0.5D_2$。试选择实心轴的直径$d_1$和空心轴内外径$D_2$。
+		\onegraphr{tu12}
+		\begin{Answers}[5]
+			轴所传递的扭矩为\\
+			$T=9549\frac{P}{M}=9549\frac{7.5}{100}Nm=716Nm$\hfill (3分)\\
+			由实心轴的强度条件 \\
+			$t_{max}=\frac{T}{W_t}=\frac{16T}{pd^3_1}~[t]$\hfill (3分)\\
+			可得实心圆轴的直径为 \\
+			$d_1=\sqrt[3]{\frac{16T}{p[t]}}=\sqrt[3]{\frac{16'716}{p\cdot 40\cdot 10^6}}=45mm$\hfill (3分)\\
+			由空心轴的强度条件$t_{max}=\dfrac{T}{W_t}=\dfrac{16T}{pD^3_2(1-0.5^4)}~[t]$\hfill (3分)\\
+			空心圆轴的外径为 \\
+			$D_2=\sqrt[3]{\frac{16T}{p[t](1-0.5^4)}}-\sqrt[3]{\frac{16'716}{p\cdot 40\cdot 10^6(1-0.5^4)}}=46mm$\hfill (3分)\\
+		\end{Answers}
+		\end{questions}
+\end{document}

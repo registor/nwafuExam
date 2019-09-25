@@ -1,0 +1,34 @@
+%此文件为密封试卷设计密封线
+
+\newsavebox{\marginparl}%首页密封线
+\sbox{\marginparl}{
+	\parbox{\textheight}{
+		\centering{
+			\heiti 学生院（系）：\uline{\hspace{\stretch{1}}} \quad
+			学号：\uline{\hspace{\stretch{1}}} \quad
+			姓名：\uline{\hspace{\stretch{1}}} \quad
+			专业班级：\uline{\hspace{\stretch{1}}} \quad \\[2ex]
+			\dotfill 密 \dotfill 封 \dotfill 线 \dotfill
+		}
+	}
+}
+\newcommand{\printmarginparl}{%作为左边注显示出来
+	\marginpar[\rotatebox{90}{\usebox{\marginparl}}]{\rotatebox{90}{\usebox{\marginparl}}}
+	\reversemarginpar
+}
+
+
+\newsavebox{\marginparr}%右边密封线
+\sbox{\marginparr}{
+	\parbox{\textheight}{
+		\centering{
+			\heiti 请 \hspace{\stretch{1}} 不 \hspace{\stretch{1}} 要 \hspace{\stretch{1}} 在 \hspace{\stretch{1}}
+			密 \hspace{\stretch{1}} 封 \hspace{\stretch{1}} 线 \hspace{\stretch{1}} 内 \hspace{\stretch{1}} 答 \hspace{\stretch{1}} 题 \\[2ex]
+			\dotfill 密 \dotfill 封 \dotfill 线 \dotfill
+		}
+	}
+}
+\newcommand{\printmarginparr}{%作为右边注显示出来
+	\marginpar{\rotatebox{-90}{\usebox{\marginparr}}}
+	\reversemarginpar
+}

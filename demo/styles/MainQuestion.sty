@@ -1,0 +1,43 @@
+%主题干的设计
+\newcounter{MainQcounter}%主题干计数器
+\newcommand\MainQuestion[2]{
+	\def\MainQname{#1}%主题干名称
+	\def\MainQdescription{#2}%主题干的描述
+	\stepcounter{MainQcounter}
+	\if@contitemcnt \else \setcounter{question}{0} \fi%判断是否为连续编号
+	\fullwidth{
+		\if@prescorebox \PreScoreBox \fi%设置前置评分框
+		%显示主题干
+		\begin{minipage}{\textwidth-1.1\ScoreBoxWidth}
+			\heiti \chinese{MainQcounter}. \MainQname
+			\kaishu （ \MainQdescription ）
+			\if@prescorebox \else \TailScoreBox \fi%设置后置评分框
+		\end{minipage}
+	}
+	\vspace{1ex}
+}
+%评分框的设计
+\newlength\ScoreBoxWidth
+\setlength\ScoreBoxWidth{0em}
+\if@prescorebox \setlength\ScoreBoxWidth{9em} \fi
+\newcommand\PreScoreBox{%前置评分框
+	\heiti
+	\renewcommand\arraystretch{1.2}%修改表格行距
+	\makebox[\ScoreBoxWidth][c]{
+		\begin{tabularx}{\ScoreBoxWidth}{|*{2}{>{\centering\arraybackslash}X|}}
+			\hline
+			得~~~分 &      \\
+			\hline
+			评阅人    &      \\
+			\hline
+		\end{tabularx}
+	}
+}
+
+\newcommand{\TailScoreBox}{%后置评分框
+	\hfill
+	\heiti\large
+	\begin{tabular}{lr}
+		得分: & \hspace*{1em}分\\	
+	\end{tabular}
+}

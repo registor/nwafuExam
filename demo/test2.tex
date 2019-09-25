@@ -1,0 +1,257 @@
+% nwsuafexam文档类各个选项的含义：
+% answers     是否显示答案（缺省为不显示）
+% sealed      是否为密封试卷（缺省为普通）
+% contitemcnt 是否为各小题题目进行连续编号（缺省为不连续编号）
+% prescorebox 显示前置评分框（缺省为不显示）。
+% cancelspace 忽略答题空白（在answers下此项无效）
+% Tailscore   分值显示位置（题目开头或者题目右边界，缺省为题目开头）
+\documentclass[Tailscore,contitemcnt,answers]{nwsuafexam}%当调用或者取消一些选项参数时可能会造成试卷总页数改变，因此建议在调用或取消sealed、cancelspace、answers三个参数中的一个或几个时，先执行“工具”->“清理辅助文件”操作后再编译，否则会造成页数错乱。
+\begin{document}	
+	% 设置试卷基本信息
+	\papertitle{西北农林科技大学本科课程考试试卷}
+	\studyyear{2013}{2014}
+	\semester{2}
+	\subject{农林气象学}
+	\testmethod{闭}
+	\proteacher{张XX}
+	\checkteacher{李XX}
+	\papercategory{B}
+	% 生成标题
+	\maketitle
+	%注意事项(提供两个环境参数，分别为总分数和考试时间，环境中默认已经定义了“本试卷共XX道试题, 满分XX分,考试时间XX分钟.”格式的一条注意事项，其余事项可在环境中使用\item命令输入)
+	\begin{notice}{100}{120}
+		\item 学生在答题前请先填写专业、学号、学院、姓名等基本信息。
+	\end{notice}
+	
+	%综合得分表
+	{\heiti
+	\begin{tabularx}{\textwidth}{|*{8}{>{\centering\arraybackslash}X|}}
+		\hline
+		题号 & 一 & 二 & 三 & 四 & 五 & 总分 & 审核人\\
+		\hline
+		得分 &    &    &    &    &    &     &      \\
+		\hline
+	\end{tabularx}}
+	\begin{questions}
+		%填空题       
+		\MainQuestion{填空题}{每小题2分，共20分}
+
+		\question 
+		气象学中太阳辐射称作短波辐射，把地面和大气辐射称作\blank{长波}辐射。
+		
+		\question
+		对流层的最下层（0-2km）称摩擦层 ，其以上的大气层称\blank{自由大气}。
+		
+		\question
+		大气透明系数与大气的混浊度和入射光的波长有关，波长越短大气透明数越\blank{小}；一天中午后的大气透明系数通常最\blank{小}。
+		
+		\question
+		海陆风和疾风的共同特点是形成原因相同，不同点是\blank{周期和范围}。
+		
+		\question
+		大气中的水汽达到饱和通常通过\blank{降温}来实现，当水汽达到饱和时，则相对湿度为\blank{100\%}。
+		
+		\question
+		一天中的最高气温与最低气温之差称为日较差，其值最大的地区出现在\blank{副热带}。
+		
+		\question
+		杨凌$(34~20')$在冬至日正午时刻的太阳高度角为\blank{$32.2^\circ$}度。
+		
+		\question
+		我国季风气候的优点为\blank{雨热同季}，缺点为旱涝频繁。
+		
+		\question
+		看中央太天气预报时，预报员对图讲解的部分称作天气形势预报，随后各城市的气温、风速等的预报称作\blank{气象要素}预报。
+		
+		\question
+		某日某时刻某地距地面0.5m、2.0m高度处的气温分别为0.0~$^{\circ}$C和0.5~$^{\circ}$C，则该大气层的稳定度为\blank{绝对稳定}，若此地有污染源存在，则该时刻该地的污染将会加重。
+		
+		%单项选择题
+		\MainQuestion{单项选择题}{从下列个题备选答案中选出一个正确答案，并将其代号填写在试卷前面的括号内，答案选错或未选者，该题不得分，每小题1分，共20分}
+		\question 
+		北京时是\selectline。\selectbracket{B}
+		\Choices{北京地方时}{东经$120^\circ$的地方时}{东经$116~20'$的地方时}{东八区的时间}
+		
+	    \question
+	    在对流层中，气温随高度的增加而\selectline。\selectbracket{C}
+		\Choices{增加。}{不变。}{降低。}{有时增加有时降低。}
+		
+		\question
+		形成云的基本原因是\selectline。\selectbracket{C}
+		\Choices{空气中水汽达到饱和或过饱和。}{空气中有足够的凝结核。}{空气的上升运动。}{空气的下沉运动。}
+		
+		\question
+	    5月1日的赤纬是15N，试问当天在\selectline N以北的地区会出现极昼现象。\selectbracket{B}
+	    \Choices{63.5}{75}{78.5}{90}
+	    
+	    \question
+	    晴天水平地面上太阳直接辐射辐照度取决于太阳高度和\selectline。\selectbracket{A}
+	    \Choices{大气透明度}{太阳赤纬}{天气条件}{辐射条件}
+	    
+	    \question
+	    暖湿带一般指纬度在\selectline 之间的地带。\selectbracket{C}
+	    \Choices{$10^\circ$--$23.5^\circ$}{$23.5^\circ$--$33^\circ$}{$33^\circ$--$45^\circ$}{$45^\circ$--$50^\circ$}
+	    
+	    \question
+	    在赤道处\selectline 为零。\selectbracket{B}
+	    \Choices{气压梯度力}{地转偏向力}{惯性离心力}{摩擦力}
+	    
+	    \question
+	    分子散射对太阳光中\selectline 有较明显地减弱作用。\selectbracket{A}
+	    \Choices{波长较短部分}{波长较长部分}{中长波部分}{各个波段}
+		
+		\question
+		日平均气温$\geqslant$0$^\circ$C的持续日期成为农事活动上的\selectline。\selectbracket{B}
+		\Choices{休闲期}{农耕期}{作物积极生长期}{土壤解冻期}
+		
+		\question
+	    气温\selectline 时，太阳光的有效辐射才可能被绿色植物所利用。\selectbracket{D}
+		\Choices{$\geqslant$1$^\circ$C}{$\geqslant$2$^\circ$C}{$\geqslant$ 4$^\circ$C}{$\geqslant$5$^\circ$C}
+		
+		\question
+		0--2m的气层称为\selectline，是农业小气候研究的主要层次。\selectbracket{C}
+		\Choices{摩擦层}{对流层}{贴地气层}{近地面层}
+		
+		\question
+		已知5cm深度的土壤温度日振幅为8$^\circ$C，最高温度出现在15h。则该深度土壤温度日较差为\selectline $^\circ$C。\selectbracket{C}
+		\Choices{4}{8}{16}{无法确定}
+		
+		\question
+		我国温度的日较差和年较差随着纬度的升高是\selectline。\selectbracket{C}
+		\Choices{日较差、年较差均减小}{日较差、年较差均增大}{日较差减小、年较差增大}{日较差增大、年较差减小}
+		
+		\question
+		某时刻气温的铅直分布是随着高度的增加先增加在减小，此气温分布型属于\selectbracket{D}
+		\Choices{清晨过渡型}{日射型}{辐射型}{傍晚过渡型}
+		
+		\question
+		视觉热直减率为\selectline。\selectbracket{A}
+		\Choices{0.5$^\circ$C/100m}{0.56$^\circ$C/100m}{0.65$^\circ$C/100m}{1.0$^\circ$C/100m}
+		
+		\question
+		按照中国科学院的气候区划，把我国分成9个气候带和\selectline 气候大区。\selectbracket{B}
+		\Choices{9}{18}{28}{49}
+		
+		\question
+		暖气团向冷气团方向移动的锋称为\selectline。\selectbracket{A}
+		\Choices{暖锋}{冷锋}{准静止锋}{锢囚锋}
+		
+		\question
+		气候最主要的特征是由热量和水分状况反映的，对于自然界植物的分布来说，其中\selectline 起着主导作用\selectbracket{A}
+		\Choices{热量}{水分}{肥力}{太阳辐射}
+		
+		\question
+		在气压一定时，露点温度的高低只与\selectline 有关。\selectbracket{B}
+		\Choices{空气温度}{空气中水汽含量}{空气的饱和差}{空气的相对湿度}
+		
+		\question
+		由于水的热容量、导热率均大，所以灌溉后的潮湿土壤，白天和夜间的温度变化是\selectline。\selectbracket{D}
+		\Choices{白天升高慢，夜间降温快}{白天升高快，夜间降温慢}{白天和夜间升温降温都快}{白天和夜间升温降温都慢}	
+		
+		%判断说明题
+		\MainQuestion{判断说明题}{先判断命题正误，然后说明正确和错误的理由，判断一分，说明一分，判断错误，全题不得分，每小题2分，共10分。}
+		%用exam的\question命令和parts环境生成各个题目和其子题目，在题后用Answers环境留下正确答案。
+		\question
+		地球大气中的水汽含量一般来说是低纬多于高纬，下层多于上层，夏季多于冬季。\selectbracket{\true}
+		\begin{Answers}[2]
+			大气中的水汽主要来自于下垫面，低纬降水多，蒸发量大。夏季降水多，植被生长茂盛。
+		\end{Answers}
+		
+		\question
+		冷气块和暖气块上升同样的高度，冷气块的气压下降较少。\selectbracket{\flase}
+		\begin{Answers}[2]
+			冷气块密度大，气压下降多。
+		\end{Answers}
+		
+		\question
+		水汽凝结的条件是：$e\leqslant E$，有凝结核。\selectbracket{\flase}
+		\begin{Answers}[2]
+			因为$e\leqslant E$表示水汽饱和或不饱和，而产生凝结时应是水汽饱和或过饱和。
+		\end{Answers}
+		
+		\question
+		紧湿土壤，春季升温和秋季降温均比干松土壤要慢。\selectbracket{\true}
+		\begin{Answers}[2]
+			因为紧湿土壤的容积热量和导热率较干松土壤大。
+		\end{Answers}
+		
+		\question
+		南坡上日照时间随坡度变化，当坡度增加$1^\circ$其日照时间相当于原坡度北移纬度$1^\circ$的水平面上的日照时间。\selectbracket{\flase}
+		\begin{Answers}[2]
+			南坡上当当坡度增加$1^\circ$，其日照时间相当于原坡度南移纬度$1^\circ$的水平面上的日照时间。
+		\end{Answers}
+		%简答题
+		\MainQuestion{简答题}{回答要点，并做简明扼要的解释。每小题5分，共40分}
+		\question
+		写出地面热量平衡方程并解释各项的含义。
+		\begin{Answers}
+			地面热量平衡方程:$R=P+LE+B$。R为净辐射，P为感热通量，LE为潜热通量，B为土壤热通量。
+		\end{Answers}
+		
+		\question
+		简要叙述大气气候的特征。
+		\begin{Answers}[2]
+			大陆性气候特征：气温日、年较差大、时相早；春温高于秋温，湿度小，降水量少而四季分配不均匀、日照多。
+		\end{Answers}
+		
+		\question
+		二氧化碳和臭氧有什么生态意义？
+		\begin{Answers}
+			$CO_2$的生态意义：1.光合作用的原料；2.影响地面和大气温度的变化。
+			
+			$O_2$的生态意义：1.吸收紫外线，保护地球生命；2.影响大气温度的垂直分布。
+		\end{Answers}
+		
+		\question
+	    湿绝热直减率为什么小于干绝热直减率？
+	    \begin{Answers}
+	    	1.饱和湿空气上升时，水汽凝结释放热量，温度降低较不饱和空气少；
+	    	
+	    	2.饱和湿空气下沉时，水汽蒸发消耗热量，温度升高值较不饱和空气少。
+	    \end{Answers}
+	    
+		\question
+		人类活动如何影响气候？
+		\begin{Answers}
+			1.改变了下垫面的性质;
+			2.改变了大气成分；
+			3.人工潜热的释放。
+		\end{Answers}
+		
+		\question
+		什么叫干热风？我国北方干热风的主要类型有哪些？
+		\begin{Answers}
+			干热风是指高温，低湿，并伴有一定风力的大气干旱现象。我国北方干热风的类型有：高温低湿型，雨后酷热型和旱风型。
+		\end{Answers}
+		
+		\question
+		按照三圈环流理论，北半球有几个气压带和几个风带？各是什么？
+		\begin{Answers}
+			按照三圈环流理论，北半球有赤道低压带、副热带高压带、副极地低压带、极地高压带四个气压带和信风带、盛行西风带、极地东风带三个风带。
+		\end{Answers}
+		
+		\question
+		日出日落是太阳为什么成红色？
+		\begin{Answers}
+			太阳初生和降落时，太阳辐射穿过大气的路程很长，在漫长的路程中太阳直接辐射的短波光几乎被散射殆尽，达到我们视野的只剩下红光。
+		\end{Answers}
+		
+		%计算题
+		\MainQuestion{计算题}{要求写出主要计算步骤和结果，每小题5分，共10分。}
+		\question[5]
+		已知相对湿度$r=40\%$，露点温度$td=2^\circ C$，求饱和差d。
+		\begin{Answers}[8]
+			\begin{gather*}
+				R=E_0 10^{\frac{at}{b+c}}=6.11\times 10^{\frac{20a}{b+20}} \\
+				E=\frac{ey}{40\%}=\frac{5}{2}e \\
+				d=E-e=\frac{3}{2}e=\frac{3}{2}\times 6.11\times 10^{\frac{20a}{b+20}}=9.17\times 10^{\frac{20a}{b+20}}
+			\end{gather*}
+		\end{Answers}
+		
+		\question[5]
+		某地地理纬度等于35N,5月1日的赤纬为15N，试计算该日的昼长为多少小时？
+		\begin{Answers}[6]
+			据$\cos\omega_0=-tg\varPhi tg\delta$，把$\varPhi=35^\circ$，$\delta=15^\circ$代入求得$\omega_0=100.8^\circ$。昼长$=\dfrac{2\omega_0}{15}=\dfrac{2\times100.8}{15}=13.44h$。
+		\end{Answers}
+	\end{questions}
+\end{document}

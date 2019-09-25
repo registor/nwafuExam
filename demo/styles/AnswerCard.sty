@@ -1,0 +1,148 @@
+%此文件用于实现答题卡的功能
+%选择题
+\newcommand{\abcdfour}[4]{%在一行中排版四个选择题
+	\hspace*{2pt}
+	%1
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}
+	\hspace*{4pt}[A][B][C][D]
+	\ifprintanswers
+		{\rmfamily\bfseries#1}
+		\if@sealed\hspace*{7pt}\else\hspace*{20pt}\fi
+	\else
+		\if@sealed\hspace*{18pt}\else\hspace*{32pt}\fi
+	\fi
+	%2
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}
+	\hspace*{4pt}[A][B][C][D]
+	\ifprintanswers
+		{\rmfamily\bfseries#2}
+		\if@sealed\hspace*{7pt}\else\hspace*{20pt}\fi
+	\else
+		\if@sealed\hspace*{18pt}\else\hspace*{32pt}\fi
+	\fi
+	%3
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}
+	\hspace*{4pt}[A][B][C][D]
+	\ifprintanswers
+		{\rmfamily\bfseries#3}
+		\if@sealed\hspace*{7pt}\else\hspace*{20pt}\fi
+	\else
+		\if@sealed\hspace*{18pt}\else\hspace*{32pt}\fi
+	\fi
+	%4
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}
+	\hspace*{4pt}[A][B][C][D]
+	\ifprintanswers
+		{\rmfamily\bfseries#4}
+	\fi
+	\\
+}
+\newcommand{\abcdone}[1]{%在一行中排版一个选择题
+	\hspace*{2pt}
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}
+	\hspace*{4pt}[A][B][C][D]
+	\ifprintanswers
+		{\rmfamily\bfseries#1}
+		\if@sealed\hspace*{1pt}\else\hspace*{14pt}\fi
+	\else
+		\if@sealed\hspace*{12pt}\else\hspace*{26pt}\fi
+	\fi
+}
+
+%填空题
+\setlength\answerclearance{0.5ex}
+\CorrectChoiceEmphasis{\bfseries\kaishu\boldmath}
+\newcommand{\tkfour}[4]{%在一行中排版四个填空题
+	%1
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\fillin[#1][75pt]
+	\if@sealed\hspace*{10pt}\else\hspace*{15pt}\fi
+	%2
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\fillin[#2][75pt]
+	\if@sealed\hspace*{10pt}\else\hspace*{15pt}\fi
+	%3
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\fillin[#3][75pt]
+	\if@sealed\hspace*{10pt}\else\hspace*{15pt}\fi
+	%4
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\fillin[#4][75pt]
+	\if@sealed\hspace*{10pt}\else\hspace*{15pt}\fi
+	\\
+}
+\newcommand{\tkone}[1]{%在一行中排版一个填空题
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\fillin[#1][75pt]
+	\if@sealed\hspace*{10pt}\else\hspace*{15pt}\fi
+}
+%判断题
+\newcommand{\tfreason}[2]{%判断说明题，给出一行填写判断理由
+	\hspace*{1pt}
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\if@sealed\fillin[\wuhao #1][370pt]\else\fillin[\wuhao #1][410pt]\fi
+	\ifprintanswers
+	(\makebox[1.8ex][c]{#2})
+	\else
+	(\hspace{1.8ex})
+	\fi
+	\\
+}
+\newcommand{\tffive}[5]{%普通判断题,一行中排版五个判断题
+	\hspace*{2pt}
+	%1
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\ifprintanswers(\makebox[2em][c]{#1})\else(\hspace{2em})\fi
+	\if@sealed\hspace*{18pt}\else\hspace*{36pt}\fi
+	%2
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\ifprintanswers(\makebox[2em][c]{#2})\else(\hspace{2em})\fi
+	\if@sealed\hspace*{18pt}\else\hspace*{36pt}\fi
+	%3
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\ifprintanswers(\makebox[2em][c]{#3})\else(\hspace{2em})\fi
+	\if@sealed\hspace*{18pt}\else\hspace*{36pt}\fi
+	%4
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\ifprintanswers(\makebox[2em][c]{#4})\else(\hspace{2em})\fi
+	\if@sealed\hspace*{18pt}\else\hspace*{36pt}\fi
+	%5
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\ifprintanswers(\makebox[2em][c]{#5})\else(\hspace{2em})\fi
+	\\
+}
+\newcommand{\tfone}[1]{%普通判断题,一行中排版一个判断题
+	\hspace*{2pt}
+	%1
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\ifprintanswers(\makebox[2em][c]{#1})\else(\hspace{2em})\fi
+	\if@sealed\hspace*{12pt}\else\hspace*{30pt}\fi
+}
+%其他主观大题
+\newcommand{\Subitem}[2][5]{
+	\hspace*{0.5pt}
+	\stepcounter{question}
+	\makebox[5pt]{\thequestion.}\hspace*{4pt}
+	\ifprintanswers%输出答案
+		{\bfseries\kaishu\wuhao\boldmath 参考答案：\\#2\\[2ex]}	
+	\else
+		\vspace{#1\lineheight}
+	\fi
+}

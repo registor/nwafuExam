@@ -1,0 +1,81 @@
+% nwsuafexam文档类各个选项的含义：
+% answers     是否显示答案（缺省为不显示）
+% sealed      是否为密封试卷（缺省为普通）
+% contitemcnt 是否为各小题题目进行连续编号（缺省为不连续编号）
+% prescorebox 显示前置评分框（缺省为不显示）。
+% cancelspace 忽略答题空白（在answers下此项无效）
+% Tailscore   分值显示位置（题目开头或者题目右边界，缺省为题目开头）
+\documentclass[sealed,contitemcnt]{nwsuafexam}%当调用或者取消一些选项参数时可能会造成试卷总页数改变，因此建议在调用或取消sealed、cancelspace、answers三个参数中的一个或几个时，先执行“工具”->“清理辅助文件”操作后再编译，否则会造成页数错乱。
+\begin{document}
+	%以test2.tex为例制作答题卡	
+	% 设置试卷基本信息
+	\papertitle{西北农林科技大学本科课程答题卡}
+	\studyyear{2013}{2014}
+	\semester{2}
+	\subject{农林气象学}
+	\testmethod{闭}
+	\proteacher{张XX}
+	\checkteacher{李XX}
+	\papercategory{B}
+	% 生成标题
+	\maketitle
+	%综合得分表
+	{\heiti
+		\begin{tabularx}{\textwidth}{|*{8}{>{\centering\arraybackslash}X|}}
+			\hline
+			题号 & 一 & 二 & 三 & 四 & 五 & 总分 & 审核人\\
+			\hline
+			得分 &    &    &    &    &    &     &      \\
+			\hline
+		\end{tabularx}}
+	\raggedright %左对齐，误删，否则造成排版错误
+	%填空题
+	\MainQuestion{填空题}{每空2分，共20分}
+	\tkfour{短波;长波}{自由大气}{小;小}{周期和范围}
+	\tkfour{降温;100\%}{副热带}{$32.2^\circ$}{雨热同季}
+	\tkone{气象要素}\tkone{绝对稳定}
+	%单项选择题
+	\MainQuestion{单项选择题}{每小题1分，共20分}
+	\abcdfour{B}{C}{C}{B}
+	\abcdfour{B}{D}{C}{C}
+	\abcdfour{C}{D}{A}{B}
+	\abcdfour{A}{A}{B}{D}
+	%判断说明题
+	\MainQuestion{判断说明题}{本大题共10题，每题2分，共20分。请将\true 或\flase 填入相应的括号内。填错或不填均不得分。}
+	\tfreason{大气中的水汽主要来自于下垫面，低纬降水多。夏季降水多，植被生长茂盛。}{\true}
+	\tfreason{冷气块密度大，气压下降多。}{\flase}
+	\tfreason{因为$e\leqslant E$表示水汽饱和或不饱和，而产生凝结时应是水汽饱和或过饱和。}{\flase}
+	\tfreason{因为紧湿土壤的容积热量和导热率较干松土壤大。}{\true}
+	\tfreason{南坡上坡度增加$1^\circ$，其日照时间等于原坡度南移纬度$1^\circ$的水平面上日照时间。}{\flase}
+	%简答题
+	\MainQuestion{简答题}{请做简明扼要的解释。每小题5分，共40分}
+	\Subitem[2]{地面热量平衡方程:$R=P+LE+B$。R为净辐射，P为感热通量，LE为潜热通量，B为土壤热通量。}%每两个\Subitem之间留一个空行，否则出现排版错误
+		
+	\Subitem[2]{大陆性气候特征：气温日、年较差大、时相早；春温高于秋温，湿度小，降水量少而四季分配不均匀、日照多。}
+	
+	\Subitem[2]{$CO_2$的生态意义：1.光合作用的原料；2.影响地面和大气温度的变化。
+		
+		$O_2$的生态意义：1.吸收紫外线，保护地球生命；2.影响大气温度的垂直分布。}
+	
+	\Subitem[2]{1.饱和湿空气上升时，水汽凝结释放热量，温度降低较不饱和空气少；
+		
+		2.饱和湿空气下沉时，水汽蒸发消耗热量，温度升高值较不饱和空气少。}
+	
+	\Subitem[2]{1.改变了下垫面的性质;2.改变了大气成分；3.人工潜热的释放。}
+	
+	\Subitem[2]{干热风是指高温，低湿，并伴有一定风力的大气干旱现象。我国北方干热风的类型有：高温低湿型，雨后酷热型和旱风型。}
+	
+	\Subitem[2]{按照三圈环流理论，北半球有赤道低压带、副热带高压带、副极地低压带、极地高压带四个气压带和信风带、盛行西风带、极地东风带三个风带。}
+	
+	\Subitem[2]{太阳初生和降落时，太阳辐射穿过大气的路程很长，在漫长的路程中太阳直接辐射的短波光几乎被散射殆尽，达到我们视野的只剩下红光。}
+	%计算题
+	\MainQuestion{计算题}{请写出计算步骤和结果，每小题5分，共10分。}
+	\Subitem[7]{\begin{gather*}
+		R=E_0 10^{\frac{at}{b+c}}=6.11\times 10^{\frac{20a}{b+20}} \\
+		E=\frac{ey}{40\%}=\frac{5}{2}e \\
+		d=E-e=\frac{3}{2}e=\frac{3}{2}\times 6.11\times 10^{\frac{20a}{b+20}}=9.17\times 10^{\frac{20a}{b+20}}
+		\end{gather*}}
+	
+	\Subitem[7]{据$\cos\omega_0=-tg\varPhi tg\delta$，把$\varPhi=35^\circ$，$\delta=15^\circ$代入求得$\omega_0=100.8^\circ$。\\
+		昼长$=\frac{2\omega_0}{15}=\frac{2\times100.8}{15}=13.44h$。}
+\end{document}

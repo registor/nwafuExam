@@ -1,0 +1,176 @@
+% nwsuafexam文档类各个选项的含义：
+% answers     是否显示答案（缺省为不显示）
+% sealed      是否为密封试卷（缺省为普通）
+% contitemcnt 是否为各小题题目进行连续编号（缺省为不连续编号）
+% prescorebox 显示前置评分框（缺省为不显示）。
+% cancelspace 忽略答题空白（在answers下此项无效）
+% Tailscore   分值显示位置（题目开头或者题目右边界，缺省为题目开头）
+\documentclass[prescorebox,sealed,cancelspace]{nwsuafexam}%当调用或者取消一些选项参数时可能会造成试卷总页数改变，因此建议在调用或取消sealed、cancelspace、answers三个参数中的一个或几个时，先执行“工具”->“清理辅助文件”操作后再编译，否则会造成页数错乱。
+\begin{document}	
+	% 设置试卷基本信息
+	\papertitle{西北农林科技大学本科课程考试试卷}
+	\studyyear{2011}{2012}
+	\semester{1}
+	\subject{高等数学}
+	\testmethod{闭}
+	\proteacher{张XX}
+	\checkteacher{李XX}
+	\papercategory{A}
+	% 生成标题
+	\maketitle
+	%注意事项(提供两个环境参数，分别为总分数和考试时间，环境中默认已经定义了“本试卷共XX道试题, 满分XX分,考试时间XX分钟.”格式的一条注意事项，其余事项可在环境中使用\item命令输入)
+	\begin{notice}{100}{120}
+		\item 学生在答题前请先填写专业、学号、学院、姓名等基本信息。
+	\end{notice}
+	
+	%综合得分表
+	{\heiti
+		\begin{tabularx}{\textwidth}{|*{6}{>{\centering\arraybackslash}X|}}
+			\hline
+			题号 & 一 & 二 & 三 & 总分 & 审核人\\
+			\hline
+			得分 &    &    &    &      &      \\
+			\hline
+		\end{tabularx}}
+	%输入试卷题目
+	\begin{questions}	
+		% 判断题              
+		\MainQuestion{判断题}{本大题共10题，每题2分，共20分。请将\true 或\flase 填入相应的括号内。填错或不填均不得分。}
+		\question
+		收敛的数列必有界。\selectbracket{\true}
+		
+		\question
+		无穷大量与有界量之积是无穷大量。\selectbracket{\flase}
+		
+		\question
+	    闭区间上的间断函数必无界。\selectbracket{\flase}
+		
+		\question
+		单调函数的导函数也是单调函数。\selectbracket{\flase}
+		
+		\question
+		若$f(x)$在$x_0$点可导，则$\abs{f(x)}\text{在}(x_0,f(x_0))$点没有切线。\selectbracket{\flase}
+		
+		\question
+		若连续函数$y=f(x)$在$x_0$点不可导，则曲线$y=f(x)\text{在}(x_0,f(x_0))$点没有切线。\selectbracket{\flase}
+		
+		\question
+		若$f(x)\text{在}[a,b]$上可积，则$f(x)\text{在}[a,b]$上连续。\selectbracket{\flase}
+		
+		\question
+		若$z=f(x,y)\text{在}(x_0,y_0)$处的一阶偏导数存在，那么函数$z=f(x,y)\text{在}(x_0,y_0)$处可微。\selectbracket{\flase}
+		
+		\question
+		微分方程的含有任意常数的解是该微分方程的通解。\selectbracket{\true}
+		
+		\question
+		偶函数$f(x)\text{在区间}(-1,1)$具有二阶导数，$f''(0)=f'(0)+1 \text{，则}f(0)\text{为}f(x)$的一个极小值。\selectbracket{\true}
+		
+		% 填空题
+		\MainQuestion{填空题}{本大题共10个小题，每题2分，共20分，请将正确答案填在横线上，填错或者不填均不得分。}
+		\question
+		设$f(x-1)=x^2\text{，则}f(x+1)=$\blank{$x^2+4x+4$}.
+		
+		\question
+		若$f(x)=\dfrac{2^x-1}{2^x+1}\text{，则}\lim\limits_{x \to 0^+}=$\blank{$1$}.
+		
+		\question
+		设单调可微函数$f(x)$的反函数为$g(x)$，$f(1)=3$，$f'(1)=2$，$f''(3)=6\text{则}g'(x)=$\blank{$\dfrac{1}{2}$}.
+		
+		\question
+		设$u=xy+\dfrac{x}{y}\text{，则}du=$\blank{$(y+\dfrac{1}{y})dx+(x-\dfrac{x}{y^2})dy$}.
+		
+		\question
+		曲线$x^2=6y-y^3\text{在}(-2,2)$点切线的斜率为\blank{$\dfrac{2}{3}$}.
+		
+		\question
+		设$f(x)$为可导函数,$f'(x)=1$，$F(x)=f(\dfrac{1}{x})+f(x^2)\text{，则}F'(1)=$\blank{1}.
+		
+		\question
+		若$\int^{f(x)}_0t^2dt=x^2(1+x)\text{，则}f(2)=$\blank{$\sqrt[3]{36}$}.
+		
+		\question
+		$f(x)=x+2\sqrt{x}\text{在}[0,4]$上的最大值为\blank{$8$}.
+		
+		\question
+		广义积分$\int^{+\infty}_0~e^{-2x}dx=$\blank{$\dfrac{1}{2}$}.
+		
+		\question
+		设D为圆形区域$x^2+y^2\le 1$，$\int\int y\sqrt{1+x^5}dxdy=$\blank{$0$}.
+		
+		%计算题
+		\MainQuestion{计算题}{本大题共4个小题，每题10分，共40分}
+		\question[10]
+		计算$\lim\limits_{n \to \infty}(\dfrac{1}{n^2}+\dfrac{1}{(n+1)^2}+\cdots +\dfrac{1}{(2n)^2})$.
+		\begin{Answers}
+			因为$\dfrac{n+1}{(2n)^2}<\dfrac{1}{n^2}+\dfrac{1}{(n+1)^2}+\cdots+\dfrac{1}{(2n)^2}<\dfrac{n+1}{n^2}$\\
+			且$\lim\limits_{n \to \infty}\dfrac{n+1}{(2n)^2}=\lim\limits_{n \to \infty}\dfrac{n+1}{n^2}=0$\\
+			由迫敛性定理知：$\lim\limits_{n \to \infty}(\dfrac{1}{n^2}+\dfrac{1}{(n+1)^2}+\cdots+\dfrac{1}{(2n)^2})=0$
+		\end{Answers}
+		
+		\question[10]
+		求$y=(x+1)(x+2)^2(x+3)^3(x+4)^4\cdots\cdots(x+10)^{10}\text{在}(0,+\infty)$内的导数.
+		\begin{Answers}
+			先求对数$\ln y=\ln(x+1)+2\ln(x+2)+\cdots+10\ln(x+10)$\\
+			所以$\dfrac{1}{y}y'=\dfrac{1}{x+1}+\dfrac{2}{x+2}+\cdots+\dfrac{10}{x+10}$\\
+			即$y'=(x+1)+\cdots+(x+10)(\dfrac{1}{x+1}+\dfrac{2}{x+2}+\cdots+\dfrac{10}{x+10})$
+		\end{Answers}
+		
+		\question[10]
+		计算由曲线$xy=1$，$xy=2$，$y=x$，$y=\sqrt{3}x$围成的平面图形在第一象限的面积.
+		\begin{Answers}
+			令$u=xy$,$\nu=\dfrac{y}{x}$；则$1\le u \le2$，$1\le \nu \le\sqrt{3}$
+			\[ 
+				J=\abs{
+					\begin{array}{lr}
+						x_u & x_{\nu} \\
+						y_u & y_{\nu} \\
+					\end{array}
+					}=\abs{
+						\begin{array}{cc}
+							\dfrac{1}{2\sqrt{u\nu}} & -\dfrac{\sqrt{u}}{2\nu\sqrt{\nu}}\\
+							\dfrac{\sqrt{\nu}}{2\sqrt{u}} & \dfrac{\sqrt{u}}{\sqrt{\nu}} \\
+						\end{array}
+						}=\dfrac{1}{2\nu}
+			\]
+			所以$\int\int\limits_Dd\sigma=\int^2_1du\int^{\sqrt{3}}_1\dfrac{1}{2\nu}d\nu=\ln\sqrt{3}$
+		\end{Answers}
+		
+		\question[10]
+		求微分方程$y'=y-\dfrac{2x}{y}$的通解.
+		\begin{Answers}
+			令$y^2=u$，知$u'=2u-4x$\\
+			由微分公式知：\begin{multline*}
+				u=y^2=e^{\int 2dx}(\int-4xe^{\int -2dx}dx+C) \\
+				=e^{2x}(\int-4xe^{-2x}dx+C) \\
+				=e^{2x}(2xe^{-2x}+e^{-2x}+C)
+			\end{multline*}
+		\end{Answers}
+		
+		%证明题
+		\MainQuestion{证明题}{本大题共2分小题，每题10分，共20分。}
+		\question[10]
+		证明：$\arctan x=\arcsin\dfrac{x}{\sqrt{1+x^2}}(-\infty<x<+\infty)$.
+		\begin{Answers}
+			设$f(x)=\arctan x-\arcsin \dfrac{x}{\sqrt{1+x^2}}$\\
+			因为$f'(x)=\dfrac{1}{1+x^2}-\dfrac{1}{\sqrt{1-\dfrac{x^2}{1+x^2}}}\cdot\dfrac{\sqrt{1+x^2}-\dfrac{x^2}{\sqrt{1+x^2}}}{1+x^2}=0$\\
+			所以$f(x)=c \qquad -\infty<x<+\infty$\\
+			令$x=0,\quad f(0)=0-0=0 \quad\text{所以}c=0$~即原始成立。
+		\end{Answers}
+		
+		\question[10]
+		设$f(x)$在闭区间$[a,b]$上连续，且$f(x)>0$，\[
+			F(x)=\int^x_0~f(t)dt+\int^x_b~\frac{1}{f(t)}dt
+	    \]
+	    证明：方程$F(x)=0\text{在区间}(a,b)$内有且仅有一个实根.
+		\begin{Answers}
+			因为$F(x)\text{在}[a,b]$上连续 \\
+			且$F(a)=\int^a_b\dfrac{1}{f(t)}dt<0$，$F(b)=\int^b_af(t)dt>0$ \\
+			故方程$F(x)=0\text{在}(a,b)$上至少有一个实根.\\
+			又$F'(x)=f(x)+\dfrac{1}{f(x)}$\quad 因为$f(x)>0$\\
+			所以$F'(x)\ge 2$\\
+			即$F(x)\text{在区间}[a,b]$上单调递增.\\
+			所以$F(x)\text{在区间}[a,b]$上有且仅有一个实根. 
+		\end{Answers}
+	\end{questions}
+\end{document}

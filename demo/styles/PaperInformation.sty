@@ -1,0 +1,55 @@
+%试卷基本信息设计文件
+
+\newcommand\papertitle[1]{\def\@papertitle{#1}}%标题
+\newcommand\studyyear[2]{\def\@startyear{#1} \def\@closeyear{#2}}%年份，起始年份和结束年份
+\newcommand\semester[1]{\def\@semester{#1}}%学期
+\newcommand\subject[1]{\def\@subject{#1}}%科目
+\newcommand\testmethod[1]{\def\@testmethod{#1}}%考试方式（开卷、闭卷）
+\newcommand\proteacher[1]{\def\@proteacher{#1}}%命题教师
+\newcommand\checkteacher[1]{\def\@checkteacher{#1}}%审题教师
+\newcommand\papercategory[1]{\def\@papercategory{#1}}%试卷类别（A卷、B卷）
+%重定义\maketitle命令
+\renewcommand\maketitle{
+	\centering {\heiti \xiaosan{\@papertitle(\@papercategory 卷)}}\\[0.5em]%标题
+    %年份、学期、科目、考试方式
+	\centering {\heiti \xiaosan{\@startyear--\@closeyear 学年
+			第\@semester 学期《\@subject》课程\@testmethod 卷}}\\[0.5em]
+	\if@sealed%密封试卷采用不同方案
+	\centering{
+		\heiti
+		\begin{tabularx}{\textwidth}{*{6}{>{\centering\arraybackslash}X}}
+			命题教师： & \@proteacher & 审题教师：& \@checkteacher & 考试成绩：& \\
+			\cline{2-2}\cline{4-4}\cline{6-6}
+		\end{tabularx}\\
+		\vspace{1ex}
+		\hrulefill
+	}
+	\printmarginparl%设置密封线
+	\else
+	\centering{ 
+		\heiti
+		\begin{tabularx}{\textwidth}{*{6}{>{\centering\arraybackslash}X}}
+			专业班级： & & 命题教师：& \@proteacher & 审题教师：& \@checkteacher \\
+			\cline{2-2}\cline{4-4}\cline{6-6}
+			学生姓名： & & 学~~~~~~号： & & 考试成绩： & \\
+			\cline{2-2}\cline{4-4}\cline{6-6}
+		\end{tabularx}\\
+		\vspace{1ex}
+		\hrulefill 
+	}
+	\fi
+	\\[1ex]
+}
+
+%注意事项
+\newenvironment{notice}[2]{
+	    \begin{flushleft}
+		\heiti 注意事项： \songti
+		\begin{enumerate}
+			\item 本试卷共~\numquestions~道试题, 满分~#1~分,考试时间~#2~分钟。
+}{
+		\end{enumerate}
+		\end{flushleft}
+}
+
+
